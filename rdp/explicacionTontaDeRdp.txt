@@ -1,0 +1,22 @@
+P0 genera las tareas que se van a hacer 
+
+las tareas llegan cada "arrival rate" segundos
+
+en P1 estan las tareas que estan listas para pasar al planificador (cpu buffer)
+
+
+T1 almacena la tarea en el buffer y ??
+
+en cpu buffer estan las tareas que estan esperando para que las atiendan
+
+T2 ejecuta una tarea si el cpu esta encendido y si hay algo en el cpu buffer, 
+pasa a atender la tarea
+
+En active el cpu esta atendiendo una tarea, tarda el tiempo "service_rate" en
+atenderla y pasa al estado idle (desocupado), para que pueda ejecutar otra tarea
+
+si el cpu esta encendido pero sin hacer nada y no hay tareas en el cpu buffer, 
+se apaga el cpu y pasa al estado stand by, de donde sale solamente si le entra
+un token a p6 al llegar una tarea a cpu buffer. 
+
+cuando pasa eso, se dispara T6 que enciende el cpu  

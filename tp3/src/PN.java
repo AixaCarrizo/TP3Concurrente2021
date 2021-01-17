@@ -75,8 +75,8 @@ public class PN {
 
 
         for (int i = 0; i < 9; i++){
-            if (m[i] != 0) Q[i] = 1;
-            else Q[i] = 0;
+            if (m[i] != 0) Q[i] = 0;
+            else Q[i] = 1;
         }
 
 

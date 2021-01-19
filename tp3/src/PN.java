@@ -7,11 +7,11 @@ public class PN {
     int[] Q;
 
     public PN(int[] m, int[] b, int[] q, int[][] i, int[][] h,int[] s) {
-        this.m = m;
-        this.B = b; // si B[i] = 1, la transicion esta desensibilizada
-        this.Q = q;
-        this.I = i; //matriz de incidencia
-        this.H = h; //matriz de inhibicion
+        this.m = m; // Vector de marcado inicial
+        this.B = b; // Si B[i] = 1, la transicion esta desensibilizada
+        this.Q = q; // Si M[i] = 0 -> Q[i] = 1 ; Caso contrario Q[i] = 0
+        this.I = i; // Matriz de incidencia
+        this.H = h; // Matriz de inhibicion
 
 
 

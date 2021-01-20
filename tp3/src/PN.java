@@ -84,14 +84,19 @@ public class PN {
 
     public boolean isPos(int[] index) {
 
+        this.Q  = new int[9];
+
+        System.out.println("Q:\n");
         for (int i = 0; i < 9; i++) { //M(pi) = 0 -> Q[i] = 1, M(pi) != 0 -> Q[i] = 0
             if (m[i] != 0) Q[i] = 0;
             else Q[i] = 1;
+
+            System.out.println(Q[i]);
         }
 
 
         //calculo E
-
+        System.out.println("E: \n");
         for (int i = 0; i < 8; i++) {
             this.E[i] = 1;
             for (int j = 0; j < 9; j++) {
@@ -100,7 +105,9 @@ public class PN {
                     break;
                 }
             }
+            System.out.println(E[i]);
         }
+
 
 
         int temp = 0;
@@ -124,7 +131,7 @@ public class PN {
         temp = 0;
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 8; j++) {
-                temp = I[i][j] * aux[j]
+                temp = I[i][j] * aux[j];
                 aux2[i] = aux2[i] + temp;
             }
         }
@@ -134,9 +141,12 @@ public class PN {
         for (int i = 0; i < 9; i++) {   //Si algun numero del nuevo vector de marcado es negativo, no puedo dispararla
             mPrima[i] = m[i] + aux2[i];    //Sumo para obtener el nuevo vector de marcado
 
-            if (mPrima[i] == -1) return false;
+            if (mPrima[i] <0)
+            {return false;
+            }
 
         }
+        this.m = mPrima;
         return true;
     }
 

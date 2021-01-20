@@ -31,7 +31,7 @@ public class Monitor {
 
             //PRODUCTOR
             case 0:
-                pn.isPos(index);
+               // pn.isPos(index);
 
                 System.out.println("Hice disparo 0");
 

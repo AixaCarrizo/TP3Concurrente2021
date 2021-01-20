@@ -20,10 +20,10 @@ public class CPU1 extends Thread {
 
                 //aca tendria que elegir que transicion va a intentar disparar
 
-                switch (monitor.shoot(index)) {
+               // switch (monitor.shoot(index)) {
                     //y aca va lo que deberia hacer en cada transicion
-                }
-            }
+               // }
+           // }
         }
     }
 

@@ -54,25 +54,25 @@ public class PN {
 
 
         this.I = new int[][]{{0, 0, 0, 1, -1, 0, 0, 0},        // m0
-                {0, 0, 1, -1, 0, 0, 0, 0},        // m1
-                {0, -1, 0, 0, 0, 0, 0, 1},        // m2
-                {0, 0, 0, -1, 1, 0, 0, 0},        // m3
-                {-1, 0, 1, 0, 0, 0, 0, 0},        // m4
-                {1, 0, -1, 0, 0, 0, 0, 0},        // m5
-                {0, 0, 1, 0, 0, -1, 0, -1},        // m6
-                {0, 0, 0, 0, 0, 0, 1, -1},        // m7
-                {0, 1, 0, 0, 0, 0, 1, 0},       // m8
+                            {0, 0, 1, -1, 0, 0, 0, 0},        // m1
+                            {0, -1, 0, 0, 0, 0, 0, 1},        // m2
+                            {0, 0, 0, -1, 1, 0, 0, 0},        // m3
+                            {-1, 0, 1, 0, 0, 0, 0, 0},        // m4
+                            {1, 0, -1, 0, 0, 0, 0, 0},        // m5
+                            {0, 0, 1, 0, 0, -1, 0, -1},        // m6
+                            {0, 0, 0, 0, 0, 0, 1, -1},        // m7
+                            {0, 1, 0, 0, 0, 0, 1, 0},       // m8
         };
 
 
-        this.H = new int[][]{{0, 1, 0, 0, 0, 0, 0, 0, 0},        // arrival_rate
-                {0, 1, 0, 0, 0, 0, 0, 0, 0},        // power_down_threshold
-                {0, 0, 0, 0, 0, 0, 0, 0, 0},        // T1
-                {0, 0, 0, 0, 0, 0, 0, 0, 0},        // T2
-                {0, 0, 0, 0, 0, 0, 0, 0, 0},        // T3
-                {0, 0, 0, 0, 0, 0, 0, 0, 0},        // T5
-                {0, 0, 0, 0, 0, 0, 0, 0, 0},        // T6
-                {0, 0, 0, 0, 0, 0, 0, 0, 0},        // T7
+        this.H = new int[][]{   {0, 0, 0, 0, 0, 0, 0, 0, 0},        // arrival_rate
+                                {1, 1, 0, 0, 0, 0, 0, 0, 0},        // power_down_threshold
+                                {0, 0, 0, 0, 0, 0, 0, 0, 0},        // T1
+                                {0, 0, 0, 0, 0, 0, 0, 0, 0},        // T2
+                                {0, 0, 0, 0, 0, 0, 0, 0, 0},        // T3
+                                {0, 0, 0, 0, 0, 0, 0, 0, 0},        // T5
+                                {0, 0, 0, 0, 0, 0, 0, 0, 0},        // T6
+                                {0, 0, 0, 0, 0, 0, 0, 0, 0},        // T7
         };
 
         this.B = new int[]{0, 0, 0, 0, 0, 0, 0, 0}; //vector de transiciones desensibilizadas por arco inhibidor
@@ -84,19 +84,20 @@ public class PN {
 
     public boolean isPos(int[] index) {
 
+
         this.Q  = new int[9];
 
-        System.out.println("Q:\n");
+        //System.out.println("Q:\n");
+
         for (int i = 0; i < 9; i++) { //M(pi) = 0 -> Q[i] = 1, M(pi) != 0 -> Q[i] = 0
             if (m[i] != 0) Q[i] = 0;
             else Q[i] = 1;
-
-            System.out.println(Q[i]);
+            //System.out.println(Q[i]);
         }
 
 
         //calculo E
-        System.out.println("E: \n");
+        //System.out.println("E: \n");
         for (int i = 0; i < 8; i++) {
             this.E[i] = 1;
             for (int j = 0; j < 9; j++) {
@@ -105,43 +106,70 @@ public class PN {
                     break;
                 }
             }
-            System.out.println(E[i]);
+            //System.out.println(E[i]);
         }
 
 
 
         int temp = 0;
         int[] aux = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
+
+        //Calculo B
+        //System.out.println("B: \n");
         for (int j = 0; j < 8; j++) {
-            B[j] = 0;
+            //B[j] = 0;
             for (int i = 0; i < 9; i++) {   //Si algun numero del nuevo vector de marcado es = 1, no puedo dispararla
                 temp = H[j][i] * Q[i];    //Sumo para obtener el nuevo vector de desensibilizado
                 B[j] = B[j] + temp; // B = 0 -> no se puede :(
             }
 
+            //System.out.println(B[j]);
+
             if (B[j] * E[j] > 0) aux[j] = 1; // B and E
+            //System.out.println("B and E: " + aux[j]+ "\n");
 
             if (aux[j] * index[j] > 0) aux[j] = 1; // sigma and Ex
-
+            else aux[j] = 0; //si no pongo el else, quedan los unos de la operacion anterior
         }
+
+
+
+        int zeroCounter = 0; //esto es para ver que lo que quiero y puedo disparar sea diferente de 0
+        System.out.println("sigma and ex: ");
+        for (int j = 0; j < 8; j++){
+            System.out.println(aux[j]+ "\n");
+            if (aux[j] != 0) zeroCounter++;
+        }
+        if(zeroCounter == 0)
+            return false;
+
 
 
         // I * aux  (n x m * m x 1 = n x 1)
         int[] aux2 = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
         temp = 0;
+        //System.out.println("I * (sigma and ex) " );
+
+
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 8; j++) {
                 temp = I[i][j] * aux[j];
                 aux2[i] = aux2[i] + temp;
             }
+
+            //System.out.println(aux2[i]+ "\n");
         }
+
+
 
         int[] mPrima = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
 
+
+        System.out.println("Nuevo marcado: \n");
         for (int i = 0; i < 9; i++) {   //Si algun numero del nuevo vector de marcado es negativo, no puedo dispararla
             mPrima[i] = m[i] + aux2[i];    //Sumo para obtener el nuevo vector de marcado
-
-            if (mPrima[i] <0)
+            System.out.println(mPrima[i]+ "\n");
+            if (mPrima[i] < 0)
             {return false;
             }
 

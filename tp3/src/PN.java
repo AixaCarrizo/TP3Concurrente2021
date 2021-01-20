@@ -84,20 +84,22 @@ public class PN {
 
     public boolean isPos(int[] index) {
 
+        System.out.println("Marca: \n");
+        printArray(m);
+
 
         this.Q  = new int[9];
 
-        //System.out.println("Q:\n");
 
         for (int i = 0; i < 9; i++) { //M(pi) = 0 -> Q[i] = 1, M(pi) != 0 -> Q[i] = 0
             if (m[i] != 0) Q[i] = 0;
             else Q[i] = 1;
-            //System.out.println(Q[i]);
         }
+        System.out.println("Q:\n");
+        printArray(Q);
 
 
         //calculo E
-        //System.out.println("E: \n");
         for (int i = 0; i < 8; i++) {
             this.E[i] = 1;
             for (int j = 0; j < 9; j++) {
@@ -106,8 +108,9 @@ public class PN {
                     break;
                 }
             }
-            //System.out.println(E[i]);
         }
+        System.out.println("E: \n");
+        printArray(E);
 
 
 
@@ -115,29 +118,36 @@ public class PN {
         int[] aux = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
 
         //Calculo B
-        //System.out.println("B: \n");
         for (int j = 0; j < 8; j++) {
             //B[j] = 0;
             for (int i = 0; i < 9; i++) {   //Si algun numero del nuevo vector de marcado es = 1, no puedo dispararla
-                temp = H[j][i] * Q[i];    //Sumo para obtener el nuevo vector de desensibilizado
+                //temp = H[j][i] * Q[i];    //Sumo para obtener el nuevo vector de desensibilizado
+                temp = H[j][i] * m[i];
                 B[j] = B[j] + temp; // B = 0 -> no se puede :(
             }
+            if(B[j] == 0) //por alguna razon no le esta dando un pingo de bola a este if (no importa si esta o no, siempre da 0)
+                B[j] = 1;
+            else
+                B[j] = 0;
+        }
 
-            //System.out.println(B[j]);
+        System.out.println("H x m: \n");
+        printArray(B);
 
+
+        for(int j = 0; j < 8; j++){
             if (B[j] * E[j] > 0) aux[j] = 1; // B and E
-            //System.out.println("B and E: " + aux[j]+ "\n");
-
             if (aux[j] * index[j] > 0) aux[j] = 1; // sigma and Ex
             else aux[j] = 0; //si no pongo el else, quedan los unos de la operacion anterior
         }
 
+        System.out.println("sigma and Ex: \n");
+        printArray(aux);
+
 
 
         int zeroCounter = 0; //esto es para ver que lo que quiero y puedo disparar sea diferente de 0
-        System.out.println("sigma and ex: ");
         for (int j = 0; j < 8; j++){
-            System.out.println(aux[j]+ "\n");
             if (aux[j] != 0) zeroCounter++;
         }
         if(zeroCounter == 0)
@@ -148,7 +158,6 @@ public class PN {
         // I * aux  (n x m * m x 1 = n x 1)
         int[] aux2 = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
         temp = 0;
-        //System.out.println("I * (sigma and ex) " );
 
 
         for (int i = 0; i < 9; i++) {
@@ -156,8 +165,6 @@ public class PN {
                 temp = I[i][j] * aux[j];
                 aux2[i] = aux2[i] + temp;
             }
-
-            //System.out.println(aux2[i]+ "\n");
         }
 
 
@@ -178,4 +185,11 @@ public class PN {
         return true;
     }
 
+    public void printArray(int [] array){
+        for(int i = 0; i < array.length; i++)
+            System.out.println(array[i] + " ");
+    }
+
 }
+
+

@@ -88,15 +88,16 @@ public class PN {
         printArray(m);
 
 
-        this.Q  = new int[9];
+        //this.Q  = new int[9];
 
 
-        for (int i = 0; i < 9; i++) { //M(pi) = 0 -> Q[i] = 1, M(pi) != 0 -> Q[i] = 0
+
+        /*for (int i = 0; i < 9; i++) { //M(pi) = 0 -> Q[i] = 1, M(pi) != 0 -> Q[i] = 0
             if (m[i] != 0) Q[i] = 0;
             else Q[i] = 1;
         }
         System.out.println("Q:\n");
-        printArray(Q);
+        printArray(Q);*/
 
 
         //calculo E
@@ -119,20 +120,22 @@ public class PN {
 
         //Calculo B
         for (int j = 0; j < 8; j++) {
-            //B[j] = 0;
+            B[j] = 0;
             for (int i = 0; i < 9; i++) {   //Si algun numero del nuevo vector de marcado es = 1, no puedo dispararla
                 //temp = H[j][i] * Q[i];    //Sumo para obtener el nuevo vector de desensibilizado
                 temp = H[j][i] * m[i];
                 B[j] = B[j] + temp; // B = 0 -> no se puede :(
             }
-            if(B[j] == 0) //por alguna razon no le esta dando un pingo de bola a este if (no importa si esta o no, siempre da 0)
+            if(B[j] == 0) {
                 B[j] = 1;
-            else
+            }
+            else {
                 B[j] = 0;
+            }
         }
 
-        System.out.println("H x m: \n");
-        printArray(B);
+        //System.out.println("H x m: \n");
+        //printArray(B);
 
 
         for(int j = 0; j < 8; j++){
@@ -141,8 +144,8 @@ public class PN {
             else aux[j] = 0; //si no pongo el else, quedan los unos de la operacion anterior
         }
 
-        System.out.println("sigma and Ex: \n");
-        printArray(aux);
+        //System.out.println("sigma and Ex: \n");
+        //printArray(aux);
 
 
 
@@ -156,9 +159,8 @@ public class PN {
 
 
         // I * aux  (n x m * m x 1 = n x 1)
-        int[] aux2 = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
-        temp = 0;
 
+        int[] aux2 = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
 
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 8; j++) {
@@ -184,6 +186,8 @@ public class PN {
         this.m = mPrima;
         return true;
     }
+
+
 
     public void printArray(int [] array){
         for(int i = 0; i < array.length; i++)

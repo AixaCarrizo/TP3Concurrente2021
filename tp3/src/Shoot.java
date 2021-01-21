@@ -10,6 +10,19 @@ public class Shoot {
     public void disparo()
     {
 
+        /*
+         *
+         * T0: Arrival_rate
+         * T1: Power_down_threshold
+         * T2: T1
+         * T3: T2
+         * T4: T3
+         * T5: T5
+         * T6: T6
+         * T7: T7
+         *
+         */
+
         int[] disparo = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
         int numDisp = 0;
         disparo[numDisp] = 1;

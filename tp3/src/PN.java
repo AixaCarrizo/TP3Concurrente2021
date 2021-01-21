@@ -1,6 +1,6 @@
 public class PN {
 
-    int[] m;
+    int[] M;
     int[] B;
     int[][] I;
     int[][] H;
@@ -10,7 +10,7 @@ public class PN {
 
     // N = cant de estados , M = cant de transiciones
     public PN(int[] m, int[] b, int[] q, int[][] i, int[][] h, int[] E) {
-        this.m = m; // Vector de marcado inicial // (N x 1)
+        this.M = m; // Vector de marcado inicial // (N x 1)
         this.B = b; // Si B[i] = 1, la transicion esta desensibilizada (M x 1)
         this.Q = q; // Si M[i] = 0 -> Q[i] = 1 ; Caso contrario Q[i] = 0 (N x 1)
         this.I = i; // Matriz de incidencia (N x M)
@@ -24,7 +24,7 @@ public class PN {
 
     public void init() {
 
-        this.m = new int[]{0, 0, 0, 1, 1, 0, 0, 0, 1}; //Vector de marcado inicial
+        this.M = new int[]{0, 0, 0, 1, 1, 0, 0, 0, 1}; //Vector de marcado inicial
 
         /**
          * m0: active
@@ -85,7 +85,7 @@ public class PN {
     public boolean isPos(int[] index) {
 
         System.out.println("Marca: \n");
-        printArray(m);
+        printArray(M);
 
 
         //this.Q  = new int[9];
@@ -101,11 +101,11 @@ public class PN {
 
 
         //calculo E
-        for (int i = 0; i < 8; i++) {
-            this.E[i] = 1;
-            for (int j = 0; j < 9; j++) {
-                if (I[j][i] + m[j] < 0) {
-                    E[i] = 0;
+        for (int m = 0; m < 8; m++) {
+            this.E[m] = 1;
+            for (int n = 0; n < 9; n++) {
+                if (I[n][m] + M[n] < 0) {
+                    E[m] = 0;
                     break;
                 }
             }
@@ -119,18 +119,18 @@ public class PN {
         int[] aux = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
 
         //Calculo B
-        for (int j = 0; j < 8; j++) {
-            B[j] = 0;
-            for (int i = 0; i < 9; i++) {   //Si algun numero del nuevo vector de marcado es = 1, no puedo dispararla
-                //temp = H[j][i] * Q[i];    //Sumo para obtener el nuevo vector de desensibilizado
-                temp = H[j][i] * m[i];
-                B[j] = B[j] + temp; // B = 0 -> no se puede :(
+        for (int m = 0; m < 8; m++) {
+            B[m] = 0;
+            for (int n = 0; n < 9; n++) {   //Si algun numero del nuevo vector de marcado es = 1, no puedo dispararla
+                //temp = H[m][i] * Q[i];    //Sumo para obtener el nuevo vector de desensibilizado
+                temp = H[m][n] * M[n];
+                B[m] = B[m] + temp; // B = 0 -> no se puede :(
             }
-            if(B[j] == 0) {
-                B[j] = 1;
+            if(B[m] == 0) {
+                B[m] = 1;
             }
             else {
-                B[j] = 0;
+                B[m] = 0;
             }
         }
 
@@ -138,10 +138,10 @@ public class PN {
         //printArray(B);
 
 
-        for(int j = 0; j < 8; j++){
-            if (B[j] * E[j] > 0) aux[j] = 1; // B and E
-            if (aux[j] * index[j] > 0) aux[j] = 1; // sigma and Ex
-            else aux[j] = 0; //si no pongo el else, quedan los unos de la operacion anterior
+        for(int m = 0; m < 8; m++){
+            if (B[m] * E[m] > 0) aux[m] = 1; // B and E
+            if (aux[m] * index[m] > 0) aux[m] = 1; // sigma and Ex
+            else aux[m] = 0; //si no pongo el else, quedan los unos de la operacion anterior
         }
 
         //System.out.println("sigma and Ex: \n");
@@ -150,8 +150,8 @@ public class PN {
 
 
         int zeroCounter = 0; //esto es para ver que lo que quiero y puedo disparar sea diferente de 0
-        for (int j = 0; j < 8; j++){
-            if (aux[j] != 0) zeroCounter++;
+        for (int m = 0; m < 8; m++){
+            if (aux[m] != 0) zeroCounter++;
         }
         if(zeroCounter == 0)
             return false;
@@ -162,10 +162,10 @@ public class PN {
 
         int[] aux2 = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 8; j++) {
-                temp = I[i][j] * aux[j];
-                aux2[i] = aux2[i] + temp;
+        for (int n = 0; n < 9; n++) {
+            for (int m = 0; m < 8; m++) {
+                temp = I[n][m] * aux[m];
+                aux2[n] = aux2[n] + temp;
             }
         }
 
@@ -175,15 +175,15 @@ public class PN {
 
 
         System.out.println("Nuevo marcado: \n");
-        for (int i = 0; i < 9; i++) {   //Si algun numero del nuevo vector de marcado es negativo, no puedo dispararla
-            mPrima[i] = m[i] + aux2[i];    //Sumo para obtener el nuevo vector de marcado
-            System.out.println(mPrima[i]+ "\n");
-            if (mPrima[i] < 0)
+        for (int n = 0; n < 9; n++) {   //Si algun numero del nuevo vector de marcado es negativo, no puedo dispararla
+            mPrima[n] = M[n] + aux2[n];    //Sumo para obtener el nuevo vector de marcado
+            System.out.println(mPrima[n]+ "\n");
+            if (mPrima[n] < 0)
             {return false;
             }
 
         }
-        this.m = mPrima;
+        this.M = mPrima;
         return true;
     }
 

@@ -20,14 +20,14 @@ public class CPU1 extends Thread {
         try {
 
             while (true) {
-                if(monitor.shoot(4) == 1) { //Disparo T2
+                if(monitor.shoot(3) == 1) { //Disparo T2
                     buffer.remove(); //Saco un elemento del buffer
-                    monitor.shoot(5); //Disparo T3 (service_rate);
+                    Thread.sleep(serviceRate);
+                    monitor.shoot(4); //Disparo T3 (service_rate);
                     System.out.println("Termine la tarea nro: "+tasks);
                     tasks++;
                 }
-                else
-                    Thread.sleep(serviceRate);
+
             }
 
         }catch(InterruptedException e)

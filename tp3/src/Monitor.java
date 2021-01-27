@@ -82,21 +82,18 @@ public class Monitor {
             case 1:
 
                 if (pn.isPos(shoot)) {
-                    try {
-                        if (buffer1.size() == maxBufferSize)
-                            powerDownCpu1.await();
-                    }
-                    catch (InterruptedException e1) {
-                        e1.printStackTrace();
-                    }
-                    finally {
                         System.out.println("Hice disparo 1");
                         valueToReturn = 1;
-                    }
                 }
                 else
                     System.out.println("No se puedo realizar el disparo 1");
 
+                try {
+                    powerDownCpu1.await();
+                }
+                catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
                 lock.unlock();
                 return valueToReturn;
 
@@ -105,6 +102,7 @@ public class Monitor {
             case 2:
 
                 if (pn.isPos(shoot)) {
+                    powerDownCpu1.signal();
                     System.out.println("Hice disparo 2");
                     notEmptyBuffer1.signal();
                     valueToReturn = 1;
@@ -140,7 +138,7 @@ public class Monitor {
             case 4: // termina atender una tarea (T3)
 
                 if (pn.isPos(shoot)) {
-                    //busyCpu1.signal();
+                    powerDownCpu1.signal();
                     System.out.println("Hice disparo 3");
                     valueToReturn = 1;
 
@@ -155,6 +153,12 @@ public class Monitor {
             case 5: // para funar los tokens en P6 cuando el cpu ya esta prendido (T5)
 
                 if (pn.isPos(shoot)) {
+                    try {
+                        powerDownCpu1.await();
+                    }
+                    catch (InterruptedException e1) {
+                        e1.printStackTrace();
+                    }
                     System.out.println("Hice disparo 5");
                     valueToReturn = 1;
                 }
@@ -180,7 +184,12 @@ public class Monitor {
             case 7: //enciende el cpu (T7)
 
                 if (pn.isPos(shoot)) {
-                    powerDownCpu1.signal();
+                    try {
+                        powerDownCpu1.await();
+                    }
+                    catch (InterruptedException e1) {
+                        e1.printStackTrace();
+                    }
                     System.out.println("Hice disparo 7");
                     valueToReturn = 1;
                 }

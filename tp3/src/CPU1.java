@@ -1,29 +1,38 @@
 public class CPU1 extends Thread {
 
-        private int id;
-        private Monitor monitor;
-        private CPU_buffer buffer1;
+    private Monitor monitor;
+    private CPU_buffer buffer;
+    private int serviceRate;
 
-        public CPU1(int id, Monitor monitor, CPU_buffer buffer1){
-                this.id = id;
-                this.monitor = monitor;
-                this.buffer1 = buffer1;
+    public CPU1(Monitor monitor, CPU_buffer cpuBuffer, int serviceRate)
+    {
+        this.monitor = monitor;
+        this.buffer = cpuBuffer;
+        this.serviceRate = serviceRate;
+    }
+
+    @Override
+    public  void run() {
+        super.run();
+
+        int tasks = 0;
+
+        try {
+
+            while (true) {
+                if(monitor.shoot(4) == 1) { //Disparo T2
+                    buffer.remove(); //Saco un elemento del buffer
+                    monitor.shoot(5); //Disparo T3 (service_rate);
+                    System.out.println("Termine la tarea nro: "+tasks);
+                    tasks++;
+                }
+                else
+                    Thread.sleep(serviceRate);
             }
 
-            @Override
-            public void run() {
-                super.run();
-
-                int index;
-
-            while(true) {
-
-                //aca tendria que elegir que transicion va a intentar disparar
-
-               // switch (monitor.shoot(index)) {
-                    //y aca va lo que deberia hacer en cada transicion
-               // }
-           // }
+        }catch(InterruptedException e)
+        {
+            e.printStackTrace();
         }
     }
 

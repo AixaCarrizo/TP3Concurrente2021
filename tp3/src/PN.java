@@ -84,8 +84,8 @@ public class PN {
 
     public boolean isPos(int[] index) {
 
-        System.out.println("Marca: \n");
-        printArray(M);
+        //System.out.println("Marca: \n");
+        //printArray(M);
 
 
         //this.Q  = new int[9];
@@ -110,8 +110,8 @@ public class PN {
                 }
             }
         }
-        System.out.println("E: \n");
-        printArray(E);
+        //System.out.println("E: \n");
+        //printArray(E);
 
 
 

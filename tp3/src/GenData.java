@@ -2,15 +2,15 @@ public class GenData extends Thread {
 
     private Monitor monitor;
     private CPU_buffer buffer;
-    private CPU_buffer buffer2;
+    //private CPU_buffer buffer2;
     private int arrivalRate;
 
-    public GenData(Monitor monitor, CPU_buffer cpuBuffer, CPU_buffer cpuBuffer2,int arrivalRate)
+    public GenData(Monitor monitor, CPU_buffer cpuBuffer, int arrivalRate)
     {
     this.monitor = monitor;
     this.buffer = cpuBuffer;
     this.arrivalRate = arrivalRate;
-    this.buffer2=cpuBuffer2;
+    //this.buffer2=cpuBuffer2;
     }
 
   @Override
@@ -22,13 +22,14 @@ public class GenData extends Thread {
 
           while (true) {
 
-              double choose = Math.random()*100+1;
+              //double choose = Math.random()*100+1;
 
               monitor.shoot(0); //Disparo Arrival_rate
 
               Thread.sleep(arrivalRate);
 
               //Cambiar transiciones despues
+              /*
               if(choose<50)
               {
                   monitor.shoot(2); //Disparo T1
@@ -41,7 +42,11 @@ public class GenData extends Thread {
                   buffer.add("Dato numero: " + nroData); //Agrego un elemento al buffer (Cambiar por buffer2)
                   System.out.println("Dato numero: " + nroData);
                   nroData++;
-              }
+              } */
+              monitor.shoot(2); //Disparo T1
+              buffer.add("Dato numero: " + nroData); //Agrego un elemento al buffer
+              System.out.println("Dato numero: " + nroData);
+              nroData++;
 
           }
       }catch(InterruptedException e)

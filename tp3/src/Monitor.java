@@ -89,7 +89,7 @@ public class Monitor {
                     System.out.println("No se puedo realizar el disparo 1");
 
                 try {
-                    powerDownCpu1.await();
+                    powerDownCpu1.await(); //sin importar si pudo dispararla o no, espera a que entre o se termine de atender una tarea
                 }
                 catch (InterruptedException e1) {
                     e1.printStackTrace();

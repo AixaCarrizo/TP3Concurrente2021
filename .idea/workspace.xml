@@ -214,7 +214,7 @@
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <output_file path="D:/salida.txt" is_save="true" />
+      <output_file path="$PROJECT_DIR$/../../../salida.txt" is_save="true" />
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="TP3Concurrente2021" />
       <method v="2">

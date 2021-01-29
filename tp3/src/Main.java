@@ -16,8 +16,8 @@ public class Main {
 
     public static void main(String[] args) {
         GenData gd = new GenData(monitor,buffer1, buffer2, 500, 5);
-        CPU1 cpu1 = new CPU1(monitor, buffer1, 200);
-        CpuController cpu1_poweronoff = new CpuController(monitor);
+        CPU1 cpu1 = new CPU1(monitor, buffer1, 200, 1);
+        CpuController cpu1_poweronoff = new CpuController(monitor, 1);
         Thread log = new Thread(new Log(buffer1, cpu1_poweronoff, gd, cpu1));
         cpu1_poweronoff.start();
         gd.start();

@@ -195,7 +195,7 @@ public class PN {
     }
 
     public boolean isMarked(int index){
-        return ( !(this.M[index] != 0) ); //devuelve false si no hay nada en esa plaza y viceversa
+        return ( (this.M[index] != 0) ); //devuelve false si no hay nada en esa plaza y viceversa
     }
 
 }

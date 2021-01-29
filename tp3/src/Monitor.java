@@ -170,16 +170,19 @@ public class Monitor {
 
 
             case 6: //arranca el encendido del cpu (T6)
+                if((pn.isMarked(6))){
 
-                if (pn.isPos(shoot) && (pn.isMarked(6))) {
+                    if (pn.isPos(shoot)) {
                     System.out.println("Hice disparo 6");
                     valueToReturn = 1;
+                    }
+
                 }
                 else
                     System.out.println("No se puedo realizar el disparo 6");
 
-                lock.unlock();
-                return valueToReturn;
+            lock.unlock();
+            return valueToReturn;
 
             case 7: //enciende el cpu (T7)
 

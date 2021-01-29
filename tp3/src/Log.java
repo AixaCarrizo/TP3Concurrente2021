@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.util.concurrent.TimeUnit;
 
 public class Log implements Runnable {
-    private String ruta = "D:\\salida.txt";
+    private String ruta = "D:\\log.txt";
     private String estadoBuff;
     private String estadoCpu;
     private String estadoController;
@@ -58,10 +58,10 @@ public class Log implements Runnable {
 
     @Override
     public void run() {
-        for(int j=1; j<=100; j++) {
+        for(int j=1; j<=500; j++) {
             this.EscribirContenido();
             try {
-                TimeUnit.MILLISECONDS.sleep(50);
+                TimeUnit.MILLISECONDS.sleep(25);
             } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();

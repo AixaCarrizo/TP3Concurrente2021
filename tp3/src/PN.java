@@ -26,6 +26,7 @@ public class PN {
 
         this.M = new int[]{0, 0, 0, 1, 1, 0, 0, 0, 1}; //Vector de marcado inicial
 
+
         /**
          * m0: active
          * m1: CPU_buffer
@@ -54,14 +55,14 @@ public class PN {
 
 
         this.I = new int[][]{{0, 0, 0, 1, -1, 0, 0, 0},        // m0
-                            {0, 0, 1, -1, 0, 0, 0, 0},        // m1
-                            {0, -1, 0, 0, 0, 0, 0, 1},        // m2
-                            {0, 0, 0, -1, 1, 0, 0, 0},        // m3
-                            {-1, 0, 1, 0, 0, 0, 0, 0},        // m4
-                            {1, 0, -1, 0, 0, 0, 0, 0},        // m5
-                            {0, 0, 1, 0, 0, -1, 0, -1},        // m6
-                            {0, 0, 0, 0, 0, 0, 1, -1},        // m7
-                            {0, 1, 0, 0, 0, 0, 1, 0},       // m8
+                             {0, 0, 1, -1, 0, 0, 0, 0},        // m1
+                             {0, -1, 0, 0, 0, 0, 0, 1},        // m2
+                             {0, 0, 0, -1, 1, 0, 0, 0},        // m3
+                             {-1, 0, 1, 0, 0, 0, 0, 0},        // m4
+                             {1, 0, -1, 0, 0, 0, 0, 0},        // m5
+                             {0, 0, 1, 0, 0, -1, 0, -1},        // m6
+                             {0, 0, 0, 0, 0, 0, 1, -1},        // m7
+                              {0, 1, 0, 0, 0, 0,- 1, 0},       // m8
         };
 
 
@@ -84,6 +85,7 @@ public class PN {
 
     public boolean isPos(int[] index) {
 
+        String M_name[] = new String[]{"Active","CPU_buffer","CPU_ON","Idle","P0","P1","P6","Power_up","Stand_by"};
         //System.out.println("Marca: \n");
         //printArray(M);
 
@@ -177,7 +179,7 @@ public class PN {
         System.out.println("Nuevo marcado: \n");
         for (int n = 0; n < 9; n++) {   //Si algun numero del nuevo vector de marcado es negativo, no puedo dispararla
             mPrima[n] = M[n] + aux2[n];    //Sumo para obtener el nuevo vector de marcado
-            System.out.println(mPrima[n]+ "\n");
+            System.out.println(mPrima[n]+ " "+M_name[n]+"\n");
             if (mPrima[n] < 0)
             {return false;
             }

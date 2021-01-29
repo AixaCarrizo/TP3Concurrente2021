@@ -71,11 +71,11 @@ public class Monitor {
                     } catch (InterruptedException e1) {
                         e1.printStackTrace();
                     } finally {
-                        System.out.println("Hice disparo 0");
+                        System.out.println("Hice disparo Arrival_rate");
                         valueToReturn = 1;
                     }
                 } else
-                    System.out.println("No se puedo realizar el disparo 0");
+                    System.out.println("No se puedo realizar el disparo Arrival_rate");
 
                 break;
 
@@ -84,10 +84,10 @@ public class Monitor {
             case 1:
 
                 if (pn.isPos(shoot)) {
-                    System.out.println("Hice disparo 1");
+                    System.out.println("Hice disparo Power_down");
                     valueToReturn = 1;
                 } else
-                    System.out.println("No se puedo realizar el disparo 1");
+                    System.out.println("No se puedo realizar el disparo Power_down");
 
                 try {
                     powerDownCpu1.await();
@@ -102,16 +102,18 @@ public class Monitor {
 
                 if (pn.isPos(shoot)) {
                     powerDownCpu1.signal();
-                    System.out.println("Hice disparo 2");
+                    System.out.println("Hice disparo T1");
                     notEmptyBuffer1.signal();
                     valueToReturn = 1;
                 } else
-                    System.out.println("No se puedo realizar el disparo 2");
+                    System.out.println("No se puedo realizar el disparo T1");
                 break;
 
 
             case 3: // Intenta atender una tarea (T2)
 
+                if(pn.isMarked(2)) //Veo si tengo en CPU_ON
+                {
                 if (pn.isPos(shoot)) {
                     try {
                         if (buffer1.size() == 0)
@@ -119,13 +121,15 @@ public class Monitor {
                     } catch (InterruptedException e1) {
                         e1.printStackTrace();
                     } finally {
-                        System.out.println("Hice disparo 3");
+                        System.out.println("Hice disparo T2");
                         packetCounter++;
                         notFullBuffer1.signal();
                         valueToReturn = 1;
                     }
+                }else
+                    System.out.println("No se puedo realizar el disparo T2");
                 } else
-                    System.out.println("No se puedo realizar el disparo 3");
+                    System.out.println("No se puedo realizar el disparo T2");
                 System.out.println("Cantidad de paquetes: "+ packetCounter);
 
                 break;
@@ -135,26 +139,30 @@ public class Monitor {
 
                 if (pn.isPos(shoot)) {
                     powerDownCpu1.signal();
-                    System.out.println("Hice disparo 3");
+                    System.out.println("Hice disparo T3");
                     valueToReturn = 1;
 
                 } else
-                    System.out.println("No se puedo realizar el disparo 3");
+                    System.out.println("No se puedo realizar el disparo T3");
 
                 break;
 
             case 5: // para funar los tokens en P6 cuando el cpu ya esta prendido (T5)
 
+                if(pn.isMarked(2)) //Veo si hay tokens en CPU_ON
+                {
                 if (pn.isPos(shoot)) {
                     try {
                         powerDownCpu1.await();
                     } catch (InterruptedException e1) {
                         e1.printStackTrace();
                     }
-                    System.out.println("Hice disparo 5");
+                    System.out.println("Hice disparo T5");
                     valueToReturn = 1;
+                }else
+                    System.out.println("No se puedo realizar el disparo T5");
                 } else
-                    System.out.println("No se puedo realizar el disparo 5");
+                    System.out.println("No se puedo realizar el disparo T5");
 
                 break;
 
@@ -162,12 +170,13 @@ public class Monitor {
                 if ((pn.isMarked(6))) {
 
                     if (pn.isPos(shoot)) {
-                        System.out.println("Hice disparo 6");
+                        System.out.println("Hice disparo T6");
                         valueToReturn = 1;
-                    }
+                    }else
+                        System.out.println("No se puedo realizar el disparo T6");
 
                 } else
-                    System.out.println("No se puedo realizar el disparo 6");
+                    System.out.println("No se puedo realizar el disparo T6");
 
                 break;
 
@@ -180,10 +189,10 @@ public class Monitor {
                     } catch (InterruptedException e1) {
                         e1.printStackTrace();
                     }
-                    System.out.println("Hice disparo 7");
+                    System.out.println("Hice disparo T7");
                     valueToReturn = 1;
                 } else
-                    System.out.println("No se puedo realizar el disparo 7");
+                    System.out.println("No se puedo realizar el disparo T7");
                 break;
         }
 

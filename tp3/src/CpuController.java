@@ -1,14 +1,11 @@
-import java.util.concurrent.locks.Lock;
 
 public class CpuController extends Thread {
 
     private Monitor monitor;
-    private Lock lock;
 
-    public CpuController(Monitor monitor, Lock lock)
+    public CpuController(Monitor monitor)
     {
         this.monitor = monitor;
-        this.lock = lock;
     }
 
     @Override
@@ -17,7 +14,6 @@ public class CpuController extends Thread {
         int flag;
 
         while (true) {
-            //lock.lock();
             flag= monitor.shoot(5);
             if(flag != -1){
                 if (flag != 1) { //intenta disparar t5, si no puede, intenta prender el cpu
@@ -30,8 +26,6 @@ public class CpuController extends Thread {
             else{
                 break;
             }
-            //lock.unlock();
-
         }
     }
 

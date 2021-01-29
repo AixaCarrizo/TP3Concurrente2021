@@ -1,22 +1,20 @@
-import java.util.concurrent.locks.Lock;
-
 public class GenData extends Thread {
 
     private Monitor monitor;
-    private CPU_buffer buffer;
-    //private CPU_buffer buffer2;
+    private CPU_buffer buffer1;
+    private CPU_buffer buffer2;
     private int arrivalRate;
     private int dataNumber;
-    private Lock lock;
+    private Politica politic;
 
-    public GenData(Monitor monitor, CPU_buffer cpuBuffer, int arrivalRate, int dataNumber, Lock lock)
+    public GenData(Monitor monitor, CPU_buffer buffer1, CPU_buffer buffer2, int arrivalRate, int dataNumber)
     {
     this.monitor = monitor;
-    this.buffer = cpuBuffer;
+    this.buffer1 = buffer1;
     this.arrivalRate = arrivalRate;
     this.dataNumber = dataNumber;
-    this.lock = lock;
-    //this.buffer2=cpuBuffer2;
+    this.buffer2= buffer2;
+    this.politic = new Politica(buffer1, buffer2);
     }
 
   @Override
@@ -28,36 +26,30 @@ public class GenData extends Thread {
 
           while (dataNumber != 0) {
 
-              //double choose = Math.random()*100+1;
+              int cpuId = politic.bufferPolitic();
 
-              //lock.lock();
               monitor.shoot(0); //Disparo Arrival_rate
-              //lock.unlock();
 
               Thread.sleep(arrivalRate);
 
               //Cambiar transiciones despues
-              /*
-              if(choose<50)
+
+              if(cpuId == 1)
               {
                   monitor.shoot(2); //Disparo T1
-                  buffer.add("Dato numero: " + nroData); //Agrego un elemento al buffer
+                  buffer1.add("Dato numero: " + nroData); //Agrego un elemento al buffer
                   System.out.println("Dato numero: " + nroData);
                   nroData++;
+
               }else
               {
-                  monitor.shoot(2); //
-                  buffer.add("Dato numero: " + nroData); //Agrego un elemento al buffer (Cambiar por buffer2)
+                  monitor.shoot(2); // CAMBIAR INDICE POR TRANSICION T8
+                  buffer2.add("Dato numero: " + nroData); //Agrego un elemento al buffer (Cambiar por buffer2)
                   System.out.println("Dato numero: " + nroData);
                   nroData++;
-              } */
-              //lock.lock();
-              monitor.shoot(2); //Disparo T1
-              buffer.add("Dato numero: " + nroData); //Agrego un elemento al buffer
-              System.out.println("Dato numero: " + nroData);
-              nroData++;
+              }
+
               dataNumber--;
-              //lock.unlock();
           }
       }catch(InterruptedException e)
       {

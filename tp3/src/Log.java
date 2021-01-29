@@ -58,10 +58,10 @@ public class Log implements Runnable {
 
     @Override
     public void run() {
-        for(int j=1; j<=500; j++) {
+        for(int j=1; j<=250; j++) {
             this.EscribirContenido();
             try {
-                TimeUnit.MILLISECONDS.sleep(25);
+                TimeUnit.MILLISECONDS.sleep(10);
             } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();

@@ -10,7 +10,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class Monitor {
 
-    private Lock lock = new ReentrantLock(); //esto es para que no intenten disparar cosas al mismo tiempo)?
+    private Lock lock; //esto es para que no intenten disparar cosas al mismo tiempo)?
 
     int maxBufferSize = 10;
 
@@ -196,7 +196,7 @@ public class Monitor {
                 break;
         }
 
-        if(valueToReturn == 0 && packetCounter == 10){
+        if(valueToReturn == 0 && packetCounter == 5){
                 lock.unlock();
                 return -1;
         }

@@ -18,6 +18,7 @@ public class Monitor {
     private Condition notFullBuffer1;//si esta lleno el buffer
     //private final static Condition busyCpu1 = lock.newCondition(); //si el cpu esta ocupado, esta mepa que esta al pedo
     private Condition powerDownCpu1; //si el cpu esta ocupado
+    private static int packetCounter;
 
 
     private PN pn = new PN();
@@ -30,6 +31,7 @@ public class Monitor {
         this.powerDownCpu1 = powerDownCpu1;
         this.notEmptyBuffer1 = notEmptyBuffer1;
         this.notFullBuffer1 = notFullBuffer1;
+        this.packetCounter = 0;
     }
 
 
@@ -47,8 +49,13 @@ public class Monitor {
 
     public int shoot(int index) {  //Dispara una transicion (index) devuelve 1 si pudo hacerla y 0 si no
 
+
+
         int valueToReturn = 0;
         lock.lock();
+
+
+
         int[] shoot = {0, 0, 0, 0, 0, 0, 0, 0};
         shoot[index] = 1;
 
@@ -57,45 +64,37 @@ public class Monitor {
             //PRODUCTOR
             case 0:
 
-                if (pn.isPos(shoot)){
+                if (pn.isPos(shoot)) {
                     try {
                         if (buffer1.size() == maxBufferSize)
                             notFullBuffer1.await();
-                    }
-                    catch (InterruptedException e1) {
+                    } catch (InterruptedException e1) {
                         e1.printStackTrace();
-                    }
-
-                    finally {
+                    } finally {
                         System.out.println("Hice disparo 0");
                         valueToReturn = 1;
                     }
-                }
-                else
+                } else
                     System.out.println("No se puedo realizar el disparo 0");
 
-                lock.unlock();
-                return valueToReturn;
+                break;
 
 
             //CPU1 intenta apagarse
             case 1:
 
                 if (pn.isPos(shoot)) {
-                        System.out.println("Hice disparo 1");
-                        valueToReturn = 1;
-                }
-                else
+                    System.out.println("Hice disparo 1");
+                    valueToReturn = 1;
+                } else
                     System.out.println("No se puedo realizar el disparo 1");
 
                 try {
                     powerDownCpu1.await();
-                }
-                catch (InterruptedException e1) {
+                } catch (InterruptedException e1) {
                     e1.printStackTrace();
                 }
-                lock.unlock();
-                return valueToReturn;
+                break;
 
 
             //Entra tarea al buffer (T1)
@@ -106,33 +105,30 @@ public class Monitor {
                     System.out.println("Hice disparo 2");
                     notEmptyBuffer1.signal();
                     valueToReturn = 1;
-                }
-                else
+                } else
                     System.out.println("No se puedo realizar el disparo 2");
-                lock.unlock();
-                return valueToReturn;
+                break;
 
 
             case 3: // Intenta atender una tarea (T2)
 
                 if (pn.isPos(shoot)) {
-                        try {
-                            if (buffer1.size() == 0)
-                                notEmptyBuffer1.await();
-                        }
-                        catch (InterruptedException e1) {
-                            e1.printStackTrace();
-                        }
-                        finally {
-                            System.out.println("Hice disparo 3");
-                            notFullBuffer1.signal();
-                            valueToReturn = 1;
-                        }
-                }
-                else
+                    try {
+                        if (buffer1.size() == 0)
+                            notEmptyBuffer1.await();
+                    } catch (InterruptedException e1) {
+                        e1.printStackTrace();
+                    } finally {
+                        System.out.println("Hice disparo 3");
+                        packetCounter++;
+                        notFullBuffer1.signal();
+                        valueToReturn = 1;
+                    }
+                } else
                     System.out.println("No se puedo realizar el disparo 3");
-                lock.unlock();
-                return valueToReturn;
+                System.out.println("Cantidad de paquetes: "+ packetCounter);
+
+                break;
 
 
             case 4: // termina atender una tarea (T3)
@@ -142,68 +138,64 @@ public class Monitor {
                     System.out.println("Hice disparo 3");
                     valueToReturn = 1;
 
-                }
-                else
+                } else
                     System.out.println("No se puedo realizar el disparo 3");
 
-                lock.unlock();
-                return valueToReturn;
-
+                break;
 
             case 5: // para funar los tokens en P6 cuando el cpu ya esta prendido (T5)
 
                 if (pn.isPos(shoot)) {
                     try {
                         powerDownCpu1.await();
-                    }
-                    catch (InterruptedException e1) {
+                    } catch (InterruptedException e1) {
                         e1.printStackTrace();
                     }
                     System.out.println("Hice disparo 5");
                     valueToReturn = 1;
-                }
-                else
+                } else
                     System.out.println("No se puedo realizar el disparo 5");
 
-                lock.unlock();
-                return valueToReturn;
-
+                break;
 
             case 6: //arranca el encendido del cpu (T6)
-                if((pn.isMarked(6))){
+                if ((pn.isMarked(6))) {
 
                     if (pn.isPos(shoot)) {
-                    System.out.println("Hice disparo 6");
-                    valueToReturn = 1;
+                        System.out.println("Hice disparo 6");
+                        valueToReturn = 1;
                     }
 
-                }
-                else
+                } else
                     System.out.println("No se puedo realizar el disparo 6");
 
-            lock.unlock();
-            return valueToReturn;
+                break;
+
 
             case 7: //enciende el cpu (T7)
 
                 if (pn.isPos(shoot)) {
                     try {
                         powerDownCpu1.await();
-                    }
-                    catch (InterruptedException e1) {
+                    } catch (InterruptedException e1) {
                         e1.printStackTrace();
                     }
                     System.out.println("Hice disparo 7");
                     valueToReturn = 1;
-                }
-                else
+                } else
                     System.out.println("No se puedo realizar el disparo 7");
-
-                lock.unlock();
-                return valueToReturn;
-
+                break;
         }
-        lock.unlock();
-        return 0;
+
+        if(valueToReturn == 0 && packetCounter == 10){
+                lock.unlock();
+                return -1;
+        }
+
+        else{
+            lock.unlock();
+            return valueToReturn;
+        }
+        //return 0;
     }
 }

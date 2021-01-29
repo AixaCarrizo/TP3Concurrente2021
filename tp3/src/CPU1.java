@@ -19,6 +19,7 @@ public class CPU1 extends Thread {
     @Override
     public  void run() {
         super.run();
+        int flag;
 
         int tasks = 0;
 
@@ -26,9 +27,13 @@ public class CPU1 extends Thread {
 
             while (true) {
                 //lock.lock();
-                if(monitor.shoot(3) == 1) { //Disparo T2
+                flag = monitor.shoot(3);
+                if (flag == -1)
+                    break;
+                if(flag == 1) { //Disparo T2
                     buffer.remove(); //Saco un elemento del buffer
                     //lock.unlock();
+
 
                     Thread.sleep(serviceRate);
 
@@ -36,6 +41,7 @@ public class CPU1 extends Thread {
                     monitor.shoot(4); //Disparo T3 (service_rate);
                     System.out.println("Termine la tarea nro: "+tasks);
                     tasks++;
+
                     //lock.unlock();
 
                 }

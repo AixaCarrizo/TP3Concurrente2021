@@ -36,7 +36,7 @@ public class GenData extends Thread {
 
               if(cpuId == 1)
               {
-                  monitor.shoot(2); //Disparo T1
+                  monitor.shoot(5); //Disparo T1
                   buffer1.add("Dato numero: " + nroData); //Agrego un elemento al buffer
                   System.out.println("Dato numero: " + nroData);
                   nroData++;

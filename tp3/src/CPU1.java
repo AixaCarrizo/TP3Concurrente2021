@@ -30,7 +30,6 @@ public class CPU1 extends Thread {
                 if(flag == 1) { // Disparo T2/T9
                     buffer.remove(); // Saco un elemento del buffer
 
-
                     Thread.sleep(serviceRate);
 
                     //lock.lock();

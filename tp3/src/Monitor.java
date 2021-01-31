@@ -57,11 +57,8 @@ public class Monitor {
     public int shoot(int index) {  //Dispara una transicion (index) devuelve 1 si pudo hacerla y 0 si no
 
 
-
         int valueToReturn = 0;
         lock.lock();
-
-
 
         int[] shoot = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
         shoot[index] = 1;
@@ -136,7 +133,7 @@ public class Monitor {
                 break;
 
             // ACTUALIZADO
-            case 13: // Entra tarea al buffer 1 (T1)
+            case 13: // Entra tarea al buffer 2 (T8)
 
                 if (pn.isPos(shoot)) {
                     powerDownCpu2.signal();

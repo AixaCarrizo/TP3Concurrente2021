@@ -43,7 +43,7 @@ public class GenData extends Thread {
 
               }else
               {
-                  monitor.shoot(2); // CAMBIAR INDICE POR TRANSICION T8
+                  monitor.shoot(13); // CAMBIE INDICE POR TRANSICION T8
                   buffer2.add("Dato numero: " + nroData); //Agrego un elemento al buffer (Cambiar por buffer2)
                   System.out.println("Dato numero: " + nroData);
                   nroData++;

@@ -12,23 +12,30 @@ public class Log implements Runnable {
     private String estadoController;
     private String contenido;
     private CPU_buffer buff1;
+    private CPU_buffer buff2;
     private CpuController controller1;
+    private CpuController controller2;
     private GenData gd;
     private CPU1 cpu1;
+    private CPU1 cpu2;
 
 
-    Log(CPU_buffer buffer1,CpuController controller1, GenData gd, CPU1 cpu1 ){
+    Log(CPU_buffer buffer1,CPU_buffer buffer2,CpuController controller1,CpuController controller2, GenData gd, CPU1 cpu1,CPU1 cpu2 ){
         this.buff1=buffer1;
+        this.buff2 = buffer2;
         this.controller1 = controller1;
+        this.controller2 = controller2;
         this.gd = gd;
         this.cpu1 = cpu1;
+        this.cpu2 = cpu2;
+
     }
     public void EscribirContenido() {
-        estadoBuff = LocalDateTime.now()+ " - El buffer 1 tiene "+buff1.size()+" elementos";
+        estadoBuff = LocalDateTime.now()+ " - El buffer 1 tiene "+buff1.size()+" elementos y el buffer 2 tiene "+buff2.size()+" elementos.";
         contenido= contenido + estadoBuff + "\r\n";
-        estadoCpu = " - El estado del CPU "+" es " + cpu1.getState()+"\r\n";
+        estadoCpu = " - El estado del CPU 1"+" es " + cpu1.getState()+" y el estado del CPU 2 es "+cpu2.getState()+" \r\n";
         contenido = contenido + estadoCpu;
-        estadoController = " - El estado del controlador "+" es " + controller1.getState()+"\r\n";
+        estadoController = " - El estado del controlador 1"+" es " + controller1.getState()+" y el estado del controlador 2 es "+controller2.getState()+"\r\n";
         contenido = contenido + estadoController;
 
 

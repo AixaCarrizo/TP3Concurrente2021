@@ -2,16 +2,18 @@ public class CPU1 extends Thread {
 
     private Monitor monitor;
     private CPU_buffer buffer;
+    private CPU_buffer buffer2;
     private int serviceRate;
     private int cpunumber;
 
 
-    public CPU1(Monitor monitor, CPU_buffer cpuBuffer, int serviceRate, int cpuNumber)
+    public CPU1(Monitor monitor, CPU_buffer cpuBuffer,CPU_buffer cpuBuffer2, int serviceRate, int cpuNumber)
     {
         this.monitor = monitor;
         this.buffer = cpuBuffer;
         this.serviceRate = serviceRate;
         this.cpunumber = cpuNumber - 1;
+        this.buffer2 = cpuBuffer2;
     }
 
     @Override
@@ -28,7 +30,10 @@ public class CPU1 extends Thread {
                 if (flag == -1)
                     break;
                 if(flag == 1) { // Disparo T2/T9
-                    buffer.remove(); // Saco un elemento del buffer
+                    if(cpunumber==0)
+                        buffer.remove(); // Saco un elemento del buffer 1
+                    else
+                        buffer2.remove(); //Saco un elemento del buffer 2
 
                     Thread.sleep(serviceRate);
 

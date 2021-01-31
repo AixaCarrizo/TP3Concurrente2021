@@ -17,8 +17,7 @@ public class PN {
         this.Q = q; // Si M[i] = 0 -> Q[i] = 1 ; Caso contrario Q[i] = 0 (N x 1)
         this.I = i; // Matriz de incidencia (N x M)
         this.H = h; // Matriz de inhibicion (M x N)
-        estados = 16;
-        transiciones = 15;
+
 
     }
 
@@ -69,16 +68,17 @@ public class PN {
 
         this.B = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; //vector de transiciones desensibilizadas por arco inhibidor
         this.E = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; //vector de sensibilizado
-
+        this.estados = 16;
+        this.transiciones = 15;
 
     }
 
 
     public boolean isPos(int[] index) {
 
-        //String M_name[] = new String[]{"Active","CPU_buffer","CPU_ON","Idle","P0","P1","P6","Power_up","Stand_by"};
-        //System.out.println("Marca: \n");
-        //printArray(M);
+        String M_name[] = new String[]{"Active","Active_2","CPU_buffer","CPU_buffer 2","CPU_ON","CPU_ON_2","Idle","Idle_2","P0","P1","P13","P6","Power_up","Power_up_2","Stand_by","Stand_by_2"};
+       // System.out.println("Marca: \n");
+       // printArray(M);
 
 
         //this.Q  = new int[9];
@@ -90,10 +90,10 @@ public class PN {
         System.out.println("Q:\n");
         printArray(Q);*/
 
-
         //calculo E
         for (int m = 0; m < transiciones; m++) {
             this.E[m] = 1;
+
             for (int n = 0; n < estados; n++) {
                 if (I[n][m] + M[n] < 0) {
                     E[m] = 0;
@@ -164,7 +164,7 @@ public class PN {
         System.out.println("Nuevo marcado: \n");
         for (int n = 0; n < estados; n++) {   //Si algun numero del nuevo vector de marcado es negativo, no puedo dispararla
             mPrima[n] = M[n] + aux2[n];    //Sumo para obtener el nuevo vector de marcado
-            System.out.println(mPrima[n]+ "\n");
+            System.out.println(mPrima[n]+" "+M_name[n]+ "\n");
             if (mPrima[n] < 0)
             {return false;
             }

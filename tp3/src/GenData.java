@@ -56,6 +56,6 @@ public class GenData extends Thread {
           e.printStackTrace();
       }
 
-      System.out.println(("Generador de datos a finalizado. Good Bye!"));
+      System.out.println(("El generador de datos ha finalizado. Good Bye!"));
   }
 }

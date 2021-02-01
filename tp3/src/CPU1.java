@@ -27,10 +27,8 @@ public class CPU1 extends Thread {
 
             while (true) {
                 flag = monitor.shoot(9 + cpunumber * 5); // T2 y T9 (Index: 9 y 14)
-                if (flag == -1){
-                    System.out.println(("Trabajador CPU " + (cpunumber+1) + " a finalizado. Good Bye!"));
+                if (flag == -1)
                     break;
-                }
                 if(flag == 1) { // Disparo T2/T9
                     if(cpunumber==0)
                         buffer.remove(); // Saco un elemento del buffer 1
@@ -56,6 +54,7 @@ public class CPU1 extends Thread {
         {
             e.printStackTrace();
         }
+        System.out.println(("El trabajador CPU " + (cpunumber+1) + " ha finalizado. Good Bye!"));
     }
 
 }

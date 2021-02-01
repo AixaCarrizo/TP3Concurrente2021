@@ -331,8 +331,13 @@ public class Monitor {
         }
 
         if(valueToReturn == 0 && packetCounter == 5){
+                //notify();
+                powerDownCpu1.signal();
+                powerDownCpu2.signal();
+                notEmptyBuffer1.signal();
+                notEmptyBuffer2.signal();
+                notFullBuffer.signal();
                 lock.unlock();
-                System.out.println(("Buen trabajo! END!"));
                 return -1;
         }
 

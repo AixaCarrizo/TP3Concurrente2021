@@ -284,7 +284,7 @@ public class Monitor {
 
             // ACTUALIZADO
             case 7: //arranca el encendido del cpu (T13)
-                if ((pn.isMarked(13))) {         // P13
+                if ((pn.isMarked(10))) {         // P13
 
                     if (pn.isPos(shoot)) {
                         System.out.println("Hice disparo T13");

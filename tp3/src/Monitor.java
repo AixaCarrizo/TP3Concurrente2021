@@ -31,7 +31,7 @@ public class Monitor {
     public Monitor(CPU_buffer buffer1, CPU_buffer buffer2, Lock lock,Condition notEmptyBuffer1,Condition notEmptyBuffer2
             ,Condition notFullBuffer, Condition powerDownCpu1, Condition powerDownCpu2) {
         this.buffer1 = buffer1;
-        this.buffer1 = buffer2;
+        this.buffer2 = buffer2;
         this.lock = lock;
         this.powerDownCpu1 = powerDownCpu1;
         this.powerDownCpu2 = powerDownCpu2;
@@ -332,6 +332,7 @@ public class Monitor {
 
         if(valueToReturn == 0 && packetCounter == 5){
                 lock.unlock();
+                System.out.println(("Buen trabajo! END!"));
                 return -1;
         }
 

@@ -21,6 +21,7 @@ public class Monitor {
     private Condition powerDownCpu1; //si el cpu esta ocupado
     private Condition powerDownCpu2; //si el cpu esta ocupado
     private static int packetCounter;
+    private Politica politic;
 
 
     private PN pn = new PN();
@@ -39,6 +40,7 @@ public class Monitor {
         this.notEmptyBuffer2 = notEmptyBuffer2;
         this.notFullBuffer = notFullBuffer;
         this.packetCounter = 0;
+        this.politic = new Politica(buffer1, buffer2);
     }
 
 
@@ -77,11 +79,10 @@ public class Monitor {
                         e1.printStackTrace();
                     } finally {
                         System.out.println("Hice disparo Arrival_rate");
-                        valueToReturn = 1;
+                        valueToReturn = politic.bufferPolitic();
                     }
                 } else
                     System.out.println("No se puedo realizar el disparo Arrival_rate");
-
                 break;
 
             /*-----------------------------------------------------------------------*/
@@ -119,7 +120,6 @@ public class Monitor {
                 break;
 
             /*-----------------------------------------------------------------------*/
-
             // ACTUALIZADO
             case 5: // Entra tarea al buffer 1 (T1)
 
@@ -143,7 +143,6 @@ public class Monitor {
                 } else
                     System.out.println("No se puedo realizar el disparo T8");
                 break;
-
             /*-----------------------------------------------------------------------*/
 
             // ACTUALIZADO

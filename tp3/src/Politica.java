@@ -10,9 +10,9 @@ public class Politica {
 
     int bufferPolitic(){
         if( buffer1.size() > buffer2.size() ){
-            return 2;
+            return 12;
         }
         else
-            return 1;
+            return 11;
     }
 }

@@ -5,7 +5,6 @@ public class GenData extends Thread {
     private CPU_buffer buffer2;
     private int arrivalRate;
     private int dataNumber;
-    private Politica politic;
 
     public GenData(Monitor monitor, CPU_buffer buffer1, CPU_buffer buffer2, int arrivalRate, int dataNumber)
     {
@@ -14,7 +13,6 @@ public class GenData extends Thread {
     this.arrivalRate = arrivalRate;
     this.dataNumber = dataNumber;
     this.buffer2= buffer2;
-    this.politic = new Politica(buffer1, buffer2);
     }
 
   @Override
@@ -26,22 +24,22 @@ public class GenData extends Thread {
 
           while (dataNumber != 0) {
 
-              int cpuId = politic.bufferPolitic();
+              int cpuId;
 
-              monitor.shoot(0); //Disparo Arrival_rate
+              cpuId = monitor.shoot(0); //Disparo Arrival_rate
 
               Thread.sleep(arrivalRate);
 
               //Cambiar transiciones despues
 
-              if(cpuId == 1)
+              if(cpuId == 11)
               {
                   monitor.shoot(5); //Disparo T1
                   buffer1.add("Dato numero: " + nroData); //Agrego un elemento al buffer
                   System.out.println("Dato numero: " + nroData);
                   nroData++;
 
-              }else
+              } else if(cpuId == 12)
               {
                   monitor.shoot(13); // CAMBIE INDICE POR TRANSICION T8
                   buffer2.add("Dato numero: " + nroData); //Agrego un elemento al buffer (Cambiar por buffer2)

@@ -247,9 +247,8 @@ public class Monitor {
                 System.out.println ("No se puedo realizar el disparo " + numTransitions[index]);
             }
         }
-
-        transitions += numTransitions[index];
-
+        if (valueToReturn > 0)
+            transitions += numTransitions[index];
 
         if (valueToReturn == 0 && packetCounter == dataNumber) {
             //TODO: BORRAR? notify();

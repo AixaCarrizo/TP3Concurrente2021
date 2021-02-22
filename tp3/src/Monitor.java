@@ -22,8 +22,9 @@ public class Monitor {
     private Condition powerDownCpu2; //si el cpu esta ocupado
     private static int packetCounter;
     private Politica politic;
-    private String transitions = new String("");
-    private String[] numTransitions = {"TO", "T4", "T11", "T3", "T10", "T1", "T12", "T13", "T14", "T2", "T5", "T6", "T7", "T8", "T9"};
+    private static String transitions = new String("");
+    private static String[] numTransitions = {"TO", "T4", "T11", "T3", "T10", "T1", "T12", "T13", "T14", "T2", "T5", "T6", "T7", "T8", "T9"};
+    private static int dataNumber;
 
 
     private PN pn = new PN();
@@ -32,7 +33,7 @@ public class Monitor {
     CPU_buffer buffer2;
 
     public Monitor(CPU_buffer buffer1, CPU_buffer buffer2, Lock lock,Condition notEmptyBuffer1,Condition notEmptyBuffer2
-            ,Condition notFullBuffer, Condition powerDownCpu1, Condition powerDownCpu2) {
+            ,Condition notFullBuffer, Condition powerDownCpu1, Condition powerDownCpu2, int dataNumber) {
         this.buffer1 = buffer1;
         this.buffer2 = buffer2;
         this.lock = lock;
@@ -43,6 +44,7 @@ public class Monitor {
         this.notFullBuffer = notFullBuffer;
         this.packetCounter = 0;
         this.politic = new Politica(buffer1, buffer2);
+        this.dataNumber = dataNumber;
     }
 
 
@@ -258,11 +260,11 @@ public class Monitor {
             System.out.println("No se puedo realizar el disparo " + numTransitions[index]);
         }
 
+        transitions +=  numTransitions[index];
 
-        if(valueToReturn == 0 && packetCounter == 5){
+
+        if(valueToReturn == 0 && packetCounter == dataNumber){
                 //notify();
-                this.transitions =  transitions.concat("Funcionara esto?");
-                System.out.println("El string en monitor es: " + transitions);
                 powerDownCpu1.signal();
                 powerDownCpu2.signal();
                 notEmptyBuffer1.signal();

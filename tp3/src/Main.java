@@ -1,3 +1,7 @@
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.lang.String;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -44,6 +48,20 @@ public class Main {
         catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("El string es: " + monitor.getstring());
+
+        try {
+            File file = new File("D:\transitions.txt");
+            // Si el archivo no existe es creado
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(monitor.getTransitions());
+            bw.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+        }
+        System.out.println("El string es: " + monitor.getTransitions());
     }
 }

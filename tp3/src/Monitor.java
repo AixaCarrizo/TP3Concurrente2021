@@ -59,7 +59,7 @@ public class Monitor {
      * T7: T7
      */
 
-        public String getstring() {
+        public String getTransitions() {
             return transitions;
         }
 

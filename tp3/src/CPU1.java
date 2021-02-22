@@ -20,9 +20,7 @@ public class CPU1 extends Thread {
     public  void run() {
         super.run();
         int flag;
-
-        int tasks = 0;
-
+        int tasks = 1;
         try {
 
             while (true) {
@@ -37,11 +35,9 @@ public class CPU1 extends Thread {
 
                     Thread.sleep(serviceRate);
 
-                    //lock.lock();
                     monitor.shoot(3 + cpunumber); // Disparo service_rate1-2 (Index:  3 y 4);
-                    System.out.println("Termine la tarea nro: "+tasks);
+                    System.out.println("CPU" + (cpunumber + 1) + ": Realizo su tarea numero " + tasks);
                     tasks++;
-
 
                 }
                 else {
@@ -54,7 +50,7 @@ public class CPU1 extends Thread {
         {
             e.printStackTrace();
         }
-        System.out.println(("El trabajador CPU " + (cpunumber+1) + " ha finalizado. Good Bye!"));
+        System.out.println(("CPU" + (cpunumber+1) + ": Good Bye!"));
     }
 
 }

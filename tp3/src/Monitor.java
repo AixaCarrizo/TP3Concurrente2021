@@ -25,6 +25,7 @@ public class Monitor {
     private static String transitions = new String("");
     private static String[] numTransitions = {"TO", "T4", "T11", "T3", "T10", "T1", "T12", "T13", "T14", "T2", "T5", "T6", "T7", "T8", "T9"};
     private static int dataNumber;
+    private static boolean print = false;
 
 
     private PN pn = new PN();
@@ -92,7 +93,6 @@ public class Monitor {
 
             case 1: //CPU1 intenta apagarse
                 if (pn.isPos(shoot)) {
-                    System.out.println("Hice disparo Power_down");
                     valueToReturn = 1;
                 }
                 try {
@@ -141,14 +141,13 @@ public class Monitor {
                         } catch (InterruptedException e1) {
                             e1.printStackTrace();
                         } finally {
-                            System.out.println("Hice disparo T2");
                             packetCounter++;
                             notFullBuffer.signal();
                             valueToReturn = 1;
                         }
                     }
                 }
-                System.out.println("Cantidad de paquetes: " + packetCounter);
+                //System.out.println("Cantidad de paquetes: " + packetCounter);
                 break;
             case 14: // Intenta atender una tarea (T9)
                 if(pn.isMarked(5)) //Veo si tengo en CPU_ON_2
@@ -166,7 +165,7 @@ public class Monitor {
                         }
                     }
                 }
-                System.out.println("Cantidad de paquetes: " + packetCounter);
+                //System.out.println("Cantidad de paquetes: " + packetCounter);
                 break;
 
             /*-----------------------------------------------------------------------*/
@@ -254,10 +253,13 @@ public class Monitor {
 
         /*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
 
-        if(valueToReturn > 0){
-            System.out.println("Hice disparo " + numTransitions[index]);
-        } else{
-            System.out.println("No se puedo realizar el disparo " + numTransitions[index]);
+
+        if(print){
+            if(valueToReturn > 0){
+                System.out.println("Hice disparo " + numTransitions[index]);
+            } else{
+                System.out.println("No se puedo realizar el disparo " + numTransitions[index]);
+            }
         }
 
         transitions +=  numTransitions[index];

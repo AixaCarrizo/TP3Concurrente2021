@@ -30,7 +30,7 @@ public class CpuController extends Thread {
                 break;
             }
         }
-        System.out.println(("El controlador CPU " + (cpunumber+1) + " ha finalizado. Good Bye!"));
+        System.out.println(("CPUController" + (cpunumber+1) + ": Good Bye!"));
     }
 
 

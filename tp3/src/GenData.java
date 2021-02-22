@@ -20,40 +20,30 @@ public class GenData extends Thread {
       super.run();
 
       try {
-          int nroData = 0;
+          int nroData = 1;
 
-          while (dataNumber != 0) {
-
+          while (dataNumber >= nroData) {
               int cpuId;
-
               cpuId = monitor.shoot(0); //Disparo Arrival_rate
-
               Thread.sleep(arrivalRate);
-
-              //Cambiar transiciones despues
 
               if(cpuId == 11)
               {
                   monitor.shoot(5); //Disparo T1
                   buffer1.add("Dato numero: " + nroData); //Agrego un elemento al buffer
-                  System.out.println("Dato numero: " + nroData);
-                  nroData++;
 
               } else if(cpuId == 12)
               {
                   monitor.shoot(13); // CAMBIE INDICE POR TRANSICION T8
                   buffer2.add("Dato numero: " + nroData); //Agrego un elemento al buffer (Cambiar por buffer2)
-                  System.out.println("Dato numero: " + nroData);
-                  nroData++;
               }
-
-              dataNumber--;
+              System.out.println("GenData: Genero dato numero " + nroData);
+              nroData++;
           }
       }catch(InterruptedException e)
       {
           e.printStackTrace();
       }
-
-      System.out.println(("El generador de datos ha finalizado. Good Bye!"));
+      System.out.println(("GenData: Good Bye!"));
   }
 }

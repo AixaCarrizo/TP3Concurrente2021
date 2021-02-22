@@ -8,6 +8,7 @@ public class PN {
     int[] E;
     int estados; //N
     int transiciones; //M
+    static boolean print = false;
 
 
     // N = cant de estados , M = cant de transiciones
@@ -160,15 +161,16 @@ public class PN {
 
         int[] mPrima = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
+        if(print)
+            System.out.println("Nuevo marcado: \n");
 
-        System.out.println("Nuevo marcado: \n");
         for (int n = 0; n < estados; n++) {   //Si algun numero del nuevo vector de marcado es negativo, no puedo dispararla
             mPrima[n] = M[n] + aux2[n];    //Sumo para obtener el nuevo vector de marcado
-            System.out.println(mPrima[n]+" "+M_name[n]+ "\n");
-            if (mPrima[n] < 0)
-            {return false;
+            if(print)
+                System.out.println(mPrima[n]+" "+M_name[n]+ "\n");
+            if (mPrima[n] < 0) {
+                return false;
             }
-
         }
 
         this.M = mPrima;
@@ -180,6 +182,11 @@ public class PN {
     public void printArray(int [] array){
         for(int i = 0; i < array.length; i++)
             System.out.println(array[i] + " ");
+    }
+
+    public void setPrint(boolean val){
+        print = val;
+        return;
     }
 
     public boolean isMarked(int index){

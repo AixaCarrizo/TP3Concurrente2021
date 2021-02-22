@@ -18,6 +18,7 @@ public class Log implements Runnable {
     private GenData gd;
     private CPU1 cpu1;
     private CPU1 cpu2;
+    private static boolean print = false;
 
 
     Log(CPU_buffer buffer1,CPU_buffer buffer2,CpuController controller1,CpuController controller2, GenData gd, CPU1 cpu1,CPU1 cpu2 ){
@@ -54,9 +55,11 @@ public class Log implements Runnable {
             BufferedWriter bw = new BufferedWriter(fw);
             bw.write(contenido);
             bw.close();
-            System.out.println("Contenido Guardado: ");
-            System.out.println(contenido);
-            System.out.println("Se ha guardado el txt con exito. Enhorabuena!");
+            if(print) {
+                System.out.println("Contenido Guardado: ");
+                System.out.println(contenido);
+                System.out.println("Se ha guardado el txt con exito. Enhorabuena!");
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

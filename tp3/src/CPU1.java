@@ -7,8 +7,7 @@ public class CPU1 extends Thread {
     private final int cpunumber;
 
 
-    public CPU1(Monitor monitor, CPU_buffer cpuBuffer,CPU_buffer cpuBuffer2, int serviceRate, int cpuNumber)
-    {
+    public CPU1 (Monitor monitor, CPU_buffer cpuBuffer, CPU_buffer cpuBuffer2, int serviceRate, int cpuNumber) {
         this.monitor = monitor;
         this.buffer = cpuBuffer;
         this.serviceRate = serviceRate;
@@ -17,40 +16,37 @@ public class CPU1 extends Thread {
     }
 
     @Override
-    public  void run() {
-        super.run();
+    public void run () {
+        super.run ();
         int flag;
         int tasks = 1;
-        try {
 
+        try {
             while (true) {
-                flag = monitor.shoot(9 + cpunumber * 5); // T2 y T9 (Index: 9 y 14)
+                flag = monitor.shoot (9 + cpunumber * 5); // T2 y T9 (Index: 9 y 14)
                 if (flag == -1)
                     break;
-                if(flag == 1) { // Disparo T2/T9
-                    if(cpunumber==0)
-                        buffer.remove(); // Saco un elemento del buffer 1
+                if (flag == 1) { // Disparo T2/T9
+                    if (cpunumber == 0)
+                        buffer.remove (); // Saco un elemento del buffer 1
                     else
-                        buffer2.remove(); //Saco un elemento del buffer 2
+                        buffer2.remove (); //Saco un elemento del buffer 2
 
-                    Thread.sleep(serviceRate);
+                    Thread.sleep (serviceRate);
 
-                    monitor.shoot(3 + cpunumber); // Disparo service_rate1-2 (Index:  3 y 4);
-                    System.out.println("CPU" + (cpunumber + 1) + "          : Realizo su tarea numero " + tasks);
+                    monitor.shoot (3 + cpunumber); // Disparo service_rate1-2 (Index:  3 y 4);
+                    System.out.println ("CPU" + (cpunumber + 1) + "          : Realizo su tarea numero " + tasks);
                     tasks++;
 
+                } else {
+                    Thread.sleep (1000);
                 }
-                else {
-                    Thread.sleep(1000);
-                }
-
             }
 
-        }catch(InterruptedException e)
-        {
-            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace ();
         }
-        System.out.println(("CPU" + (cpunumber+1) + "          : Good Bye!"));
+        System.out.println (("CPU" + (cpunumber + 1) + "          : Good Bye!"));
     }
 
 }

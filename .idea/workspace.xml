@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="0a46128e-2206-4425-97ff-bc55e3a35686" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -12,6 +15,7 @@
       <change beforePath="$PROJECT_DIR$/tp3/src/Monitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/tp3/src/Monitor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tp3/src/PN.java" beforeDir="false" afterPath="$PROJECT_DIR$/tp3/src/PN.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tp3/src/Politica.java" beforeDir="false" afterPath="$PROJECT_DIR$/tp3/src/Politica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tp3/src/Shoot.java" beforeDir="false" afterPath="$PROJECT_DIR$/tp3/src/Shoot.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +106,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -156,7 +160,7 @@
       <workItem from="1613851064295" duration="2073000" />
       <workItem from="1613853429321" duration="2052000" />
       <workItem from="1614011491402" duration="4035000" />
-      <workItem from="1614018995229" duration="6827000" />
+      <workItem from="1614018995229" duration="7874000" />
     </task>
     <servers />
   </component>
@@ -209,6 +213,10 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
   <component name="editorHistoryManager">
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/lang/Thread.java">

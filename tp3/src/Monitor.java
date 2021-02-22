@@ -2,33 +2,27 @@
 //import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-
-
-
-
 
 public class Monitor {
 
-    private Lock lock; //esto es para que no intenten disparar cosas al mismo tiempo)?
+    private final Lock lock; //esto es para que no intenten disparar cosas al mismo tiempo)?
 
     int maxBufferSize = 10;
 
-    private Condition notEmptyBuffer1; //si esta vacio el buffer
-    private Condition notEmptyBuffer2; //si esta vacio el buffer
-    private Condition notFullBuffer;//si esta lleno el buffer
+    private final Condition notEmptyBuffer1; //si esta vacio el buffer
+    private final Condition notEmptyBuffer2; //si esta vacio el buffer
+    private final Condition notFullBuffer;//si esta lleno el buffer
     //private final static Condition busyCpu1 = lock.newCondition(); //si el cpu esta ocupado, esta mepa que esta al pedo
-    private Condition powerDownCpu1; //si el cpu esta ocupado
-    private Condition powerDownCpu2; //si el cpu esta ocupado
-    private static int packetCounter;
-    private Politica politic;
-    private static String transitions = new String("");
-    private static String[] numTransitions = {"TO", "T4", "T11", "T3", "T10", "T1", "T12", "T13", "T14", "T2", "T5", "T6", "T7", "T8", "T9"};
-    private static int dataNumber;
-    private static boolean print = false;
+    private final Condition powerDownCpu1; //si el cpu esta ocupado
+    private final Condition powerDownCpu2; //si el cpu esta ocupado
+    private int packetCounter;
+    private final Politica politic;
+    private String transitions = new String("");
+    private final int dataNumber;
+    private static final boolean print = true;
+    private static final String[] numTransitions = {"TO", "T4", "T11", "T3", "T10", "T1", "T12", "T13", "T14", "T2", "T5", "T6", "T7", "T8", "T9"};
 
-
-    private PN pn = new PN();
+    private final PN pn = new PN();
 
     CPU_buffer buffer1;
     CPU_buffer buffer2;

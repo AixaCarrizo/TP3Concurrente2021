@@ -4,13 +4,13 @@ public class PN {
     int[] B;
     int[][] I;
     int[][] H;
-    int[] Q;
+    //int[] Q;
     int[] E;
     int estados; //N
     int transiciones; //M
-    static boolean print = false;
+    static boolean print = true;
 
-
+    /*
     // N = cant de estados , M = cant de transiciones
     public PN(int[] m, int[] b, int[] q, int[][] i, int[][] h, int[] E) {
         this.M = m; // Vector de marcado inicial // (N x 1)
@@ -18,9 +18,8 @@ public class PN {
         this.Q = q; // Si M[i] = 0 -> Q[i] = 1 ; Caso contrario Q[i] = 0 (N x 1)
         this.I = i; // Matriz de incidencia (N x M)
         this.H = h; // Matriz de inhibicion (M x N)
-
-
     }
+     */
 
     public PN() {
         init();
@@ -107,7 +106,7 @@ public class PN {
 
 
 
-        int temp = 0;
+        int temp;
         int[] aux = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0 };
 
         //Calculo B
@@ -178,7 +177,7 @@ public class PN {
     }
 
 
-
+    /*
     public void printArray(int [] array){
         for(int i = 0; i < array.length; i++)
             System.out.println(array[i] + " ");
@@ -188,6 +187,7 @@ public class PN {
         print = val;
         return;
     }
+    */
 
     public boolean isMarked(int index){
         return ( (this.M[index] != 0) ); //devuelve false si no hay nada en esa plaza y viceversa

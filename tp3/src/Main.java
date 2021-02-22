@@ -10,15 +10,14 @@ public class Main {
     static Lock lock=new ReentrantLock();
     private final static Condition notEmptyBuffer1 = lock.newCondition();
     private final static Condition notEmptyBuffer2 = lock.newCondition();
-    private final static Condition notFullBuffer1 = lock.newCondition();
-    private final static Condition notFullBuffer2 = lock.newCondition();
+    private final static Condition notFullBuffer = lock.newCondition();
     private final static Condition powerDownCpu1 = lock.newCondition();
     private final static Condition powerDownCpu2 = lock.newCondition();
     public static CPU_buffer buffer1= new CPU_buffer();
     public static CPU_buffer buffer2= new CPU_buffer();
-    private static int dataNumber = 10;
+    private final static int dataNumber = 10;
 
-    private static Monitor monitor = new Monitor(buffer1, buffer2, lock, notEmptyBuffer1, notEmptyBuffer2, notFullBuffer1, powerDownCpu1, powerDownCpu2, dataNumber);
+    private final static Monitor monitor = new Monitor(buffer1, buffer2, lock, notEmptyBuffer1, notEmptyBuffer2, notFullBuffer, powerDownCpu1, powerDownCpu2, dataNumber);
 
 
 

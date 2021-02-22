@@ -1,10 +1,10 @@
 public class CPU1 extends Thread {
 
-    private Monitor monitor;
-    private CPU_buffer buffer;
-    private CPU_buffer buffer2;
-    private int serviceRate;
-    private int cpunumber;
+    private final Monitor monitor;
+    private final CPU_buffer buffer;
+    private final CPU_buffer buffer2;
+    private final int serviceRate;
+    private final int cpunumber;
 
 
     public CPU1(Monitor monitor, CPU_buffer cpuBuffer,CPU_buffer cpuBuffer2, int serviceRate, int cpuNumber)
@@ -36,7 +36,7 @@ public class CPU1 extends Thread {
                     Thread.sleep(serviceRate);
 
                     monitor.shoot(3 + cpunumber); // Disparo service_rate1-2 (Index:  3 y 4);
-                    System.out.println("CPU" + (cpunumber + 1) + ": Realizo su tarea numero " + tasks);
+                    System.out.println("CPU" + (cpunumber + 1) + "          : Realizo su tarea numero " + tasks);
                     tasks++;
 
                 }
@@ -50,7 +50,7 @@ public class CPU1 extends Thread {
         {
             e.printStackTrace();
         }
-        System.out.println(("CPU" + (cpunumber+1) + ": Good Bye!"));
+        System.out.println(("CPU" + (cpunumber+1) + "          : Good Bye!"));
     }
 
 }

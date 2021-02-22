@@ -8,8 +8,10 @@
       <change beforePath="$PROJECT_DIR$/tp3/src/CpuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tp3/src/CpuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tp3/src/GenData.java" beforeDir="false" afterPath="$PROJECT_DIR$/tp3/src/GenData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tp3/src/Log.java" beforeDir="false" afterPath="$PROJECT_DIR$/tp3/src/Log.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tp3/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/tp3/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tp3/src/Monitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/tp3/src/Monitor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tp3/src/PN.java" beforeDir="false" afterPath="$PROJECT_DIR$/tp3/src/PN.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tp3/src/Politica.java" beforeDir="false" afterPath="$PROJECT_DIR$/tp3/src/Politica.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,7 +156,7 @@
       <workItem from="1613851064295" duration="2073000" />
       <workItem from="1613853429321" duration="2052000" />
       <workItem from="1614011491402" duration="4035000" />
-      <workItem from="1614018995229" duration="3133000" />
+      <workItem from="1614018995229" duration="6827000" />
     </task>
     <servers />
   </component>

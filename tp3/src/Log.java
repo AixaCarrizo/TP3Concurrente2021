@@ -6,19 +6,15 @@ import java.time.LocalDateTime;
 import java.util.concurrent.TimeUnit;
 
 public class Log implements Runnable {
-    private String ruta = "D:\\log.txt";
-    private String estadoBuff;
-    private String estadoCpu;
-    private String estadoController;
     private String contenido;
-    private CPU_buffer buff1;
-    private CPU_buffer buff2;
-    private CpuController controller1;
-    private CpuController controller2;
-    private GenData gd;
-    private CPU1 cpu1;
-    private CPU1 cpu2;
-    private static boolean print = false;
+    private final CPU_buffer buff1;
+    private final CPU_buffer buff2;
+    private final CpuController controller1;
+    private final CpuController controller2;
+    private final GenData gd;
+    private final CPU1 cpu1;
+    private final CPU1 cpu2;
+    private final static boolean print = false;
 
 
     Log(CPU_buffer buffer1,CPU_buffer buffer2,CpuController controller1,CpuController controller2, GenData gd, CPU1 cpu1,CPU1 cpu2 ){
@@ -32,6 +28,9 @@ public class Log implements Runnable {
 
     }
     public void EscribirContenido() {
+        String estadoBuff;
+        String estadoCpu;
+        String estadoController;
         estadoBuff = LocalDateTime.now()+ " - El buffer 1 tiene "+buff1.size()+" elementos y el buffer 2 tiene "+buff2.size()+" elementos.";
         contenido= contenido + estadoBuff + "\r\n";
         estadoCpu = " - El estado del CPU 1"+" es " + cpu1.getState()+" y el estado del CPU 2 es "+cpu2.getState()+" \r\n";
@@ -45,6 +44,7 @@ public class Log implements Runnable {
 
     public void GuardarArchivo(){
         try {
+            String ruta = "D:\\log.txt";
 
             File file = new File(ruta);
             // Si el archivo no existe es creado

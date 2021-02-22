@@ -1,8 +1,8 @@
 
 public class CpuController extends Thread {
 
-    private Monitor monitor;
-    private int cpunumber;
+    private final Monitor monitor;
+    private final int cpunumber;
 
     public CpuController(Monitor monitor, int cpuNumber)
     {

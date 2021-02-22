@@ -116,7 +116,6 @@ public class Monitor {
             case 5: // Entra tarea al buffer 1 (T1)
                 if (pn.isPos(shoot)) {
                     powerDownCpu1.signal();
-                    System.out.println("Hice disparo T1");
                     notEmptyBuffer1.signal();
                     valueToReturn = 1;
                 }
@@ -149,8 +148,6 @@ public class Monitor {
                 }
                 System.out.println("Cantidad de paquetes: " + packetCounter);
                 break;
-
-            // ACTUALIZADO
             case 14: // Intenta atender una tarea (T9)
                 if(pn.isMarked(5)) //Veo si tengo en CPU_ON_2
                 {
@@ -173,14 +170,12 @@ public class Monitor {
             /*-----------------------------------------------------------------------*/
 
             case 3: // termina atender una tarea (service_rate)
-
                 if (pn.isPos(shoot)) {
                     powerDownCpu1.signal();
                     valueToReturn = 1;
                 }
                 break;
             case 4: // termina atender una tarea (service_rate_2)
-
                 if (pn.isPos(shoot)) {
                     powerDownCpu2.signal();
                     valueToReturn = 1;
@@ -190,22 +185,19 @@ public class Monitor {
                 /*-----------------------------------------------------------------------*/
 
             case 10: // Para funar los tokens en P6 cuando el cpu ya esta prendido (T5)
-                if(pn.isMarked(4)) //Veo si hay tokens en CPU_ON
-                {
-                if (pn.isPos(shoot)) {
-                    try {
-                        powerDownCpu1.await();
-                    } catch (InterruptedException e1) {
-                        e1.printStackTrace();
+                if(pn.isMarked(4)){ //Veo si hay tokens en CPU_ON
+                    if (pn.isPos(shoot)) {
+                        try {
+                            powerDownCpu1.await();
+                        } catch (InterruptedException e1) {
+                            e1.printStackTrace();
+                        }
+                        valueToReturn = 1;
                     }
-                    valueToReturn = 1;
-                }
                 }
                 break;
             case 6: // Para funar los tokens en P13 cuando el cpu ya esta prendido (T5)
-
-                if(pn.isMarked(5)) //Veo si hay tokens en CPU_ON_2
-                {
+                if(pn.isMarked(5)){ //Veo si hay tokens en CPU_ON_2
                     if (pn.isPos(shoot)) {
                         try {
                             powerDownCpu2.await();
@@ -244,10 +236,9 @@ public class Monitor {
                         e1.printStackTrace();
                     }
                     valueToReturn = 1;
-                } else
+                }
                 break;
             case 8: //enciende el cpu (T14)
-
                 if (pn.isPos(shoot)) {
                     try {
                         powerDownCpu2.await();
@@ -255,9 +246,11 @@ public class Monitor {
                         e1.printStackTrace();
                     }
                     valueToReturn = 1;
-                } else
+                }
                 break;
         }
+
+        /*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
 
         if(valueToReturn > 0){
             System.out.println("Hice disparo " + numTransitions[index]);

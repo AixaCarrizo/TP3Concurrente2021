@@ -1,4 +1,4 @@
-public class CPU1 extends Thread {
+public class CPU extends Thread {
 
     private final Monitor monitor;
     private final CPU_buffer buffer;
@@ -7,7 +7,7 @@ public class CPU1 extends Thread {
     private final int cpunumber;
 
 
-    public CPU1 (Monitor monitor, CPU_buffer cpuBuffer, CPU_buffer cpuBuffer2, int serviceRate, int cpuNumber) {
+    public CPU (Monitor monitor, CPU_buffer cpuBuffer, CPU_buffer cpuBuffer2, int serviceRate, int cpuNumber) {
         this.monitor = monitor;
         this.buffer = cpuBuffer;
         this.serviceRate = serviceRate;

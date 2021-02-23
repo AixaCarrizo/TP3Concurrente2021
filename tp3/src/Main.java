@@ -46,7 +46,7 @@ public class Main {
         }
 
         try {
-            File file = new File ("D:\transitions.txt");
+            File file = new File ("prueba.txt");
             // Si el archivo no existe es creado
             if (!file.exists ()) {
                 file.createNewFile ();

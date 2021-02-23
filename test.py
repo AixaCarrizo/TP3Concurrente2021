@@ -24,7 +24,7 @@ def regex2(file ):
 	#print(i)
 
 
-file = open("prueba" , "r")
+file = open("prueba.txt" , "r")
 
 print("T-Invariant test Politica normal:")
 regex2(file)

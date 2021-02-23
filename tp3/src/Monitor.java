@@ -96,8 +96,8 @@ public class Monitor {
             case 1: //CPU1 intenta apagarse
                 if (pn.isPos (shoot)) {
                     valueToReturn = 1;
-                } else{
-                    if(packetCounter == dataNumber){
+                } else {
+                    if (packetCounter == dataNumber) {
                         lock.unlock ();
                         return -1;
                     }
@@ -112,6 +112,11 @@ public class Monitor {
             case 2: //CPU1 intenta apagarse
                 if (pn.isPos (shoot)) {
                     valueToReturn = 1;
+                } else {
+                    if (packetCounter == dataNumber) {
+                        lock.unlock ();
+                        return -1;
+                    }
                 }
                 printSave (index, valueToReturn);
                 try {

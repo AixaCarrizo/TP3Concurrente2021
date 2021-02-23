@@ -20,8 +20,8 @@ public class Monitor {
     private final PN pn = new PN ();
     private final CPU_buffer buffer1;
     private final CPU_buffer buffer2;
-    private static final String[] numTransitions = {"TO", "T4", "T11", "T3", "T10", "T1", "T12", "T13", "T14", "T2", "T5", "T6", "T7", "T8", "T9"};
-    private static final boolean print = false;
+    private static final String[] numTransitions = {"T0", "T4", "T11", "T3", "T10", "T1", "T12", "T13", "T14", "T2", "T5", "T6", "T7", "T8", "T9"};
+    private static final boolean print = true;
 
     public Monitor (CPU_buffer buffer1, CPU_buffer buffer2, Lock lock, Condition notEmptyBuffer1, Condition notEmptyBuffer2
             , Condition notFullBuffer, Condition powerDownCpu1, Condition powerDownCpu2, int dataNumber) {

@@ -152,9 +152,16 @@ public class PN {
 
         int[] mPrima = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
+        /* TODO: Borrar despues
+        if (print)
+            System.out.println ("INDEX:");
+        for (int m = 0; m < transiciones; m++) {
+            System.out.println (m + " - " + index[m]);
+        }
+        */
+
         if (print)
             System.out.println ("Nuevo marcado: \n");
-
         for (int n = 0; n < estados; n++) {   //Si algun numero del nuevo vector de marcado es negativo, no puedo dispararla
             mPrima[n] = M[n] + aux2[n];    //Sumo para obtener el nuevo vector de marcado
             if (print)

@@ -54,6 +54,18 @@ public class Monitor {
         return transitions;
     }
 
+    private void printSave (int index, int valueToReturn) {
+        if (print) {
+            if (valueToReturn > 0) {
+                System.out.println ("Hice disparo " + numTransitions[index]);
+            } else {
+                System.out.println ("No se puedo realizar el disparo " + numTransitions[index]);
+            }
+        }
+        if (valueToReturn > 0)
+            transitions += numTransitions[index];
+    }
+
     public int shoot (int index) {  //Dispara una transicion (index) devuelve 1 si pudo hacerla y 0 si no
         int valueToReturn = 0;
         lock.lock ();
@@ -66,12 +78,15 @@ public class Monitor {
             case 0:
                 if (pn.isPos (shoot)) {
                     try {
-                        if (buffer1.size () == maxBufferSize && buffer2.size () == maxBufferSize)
+                        if (buffer1.size () == maxBufferSize && buffer2.size () == maxBufferSize) {
+                            printSave (index, valueToReturn);
                             notFullBuffer.await ();
+                        }
                     } catch (InterruptedException e1) {
                         e1.printStackTrace ();
                     } finally {
                         valueToReturn = politic.bufferPolitic ();
+                        printSave (index, valueToReturn);
                     }
                 }
                 break;
@@ -82,6 +97,7 @@ public class Monitor {
                 if (pn.isPos (shoot)) {
                     valueToReturn = 1;
                 }
+                printSave (index, valueToReturn);
                 try {
                     powerDownCpu1.await ();
                 } catch (InterruptedException e1) {
@@ -92,6 +108,7 @@ public class Monitor {
                 if (pn.isPos (shoot)) {
                     valueToReturn = 1;
                 }
+                printSave (index, valueToReturn);
                 try {
                     powerDownCpu2.await ();
                 } catch (InterruptedException e1) {
@@ -107,6 +124,7 @@ public class Monitor {
                     notEmptyBuffer1.signal ();
                     valueToReturn = 1;
                 }
+                printSave (index, valueToReturn);
                 break;
             case 13: // Entra tarea al buffer 2 (T8)
                 if (pn.isPos (shoot)) {
@@ -114,6 +132,7 @@ public class Monitor {
                     notEmptyBuffer2.signal ();
                     valueToReturn = 1;
                 }
+                printSave (index, valueToReturn);
                 break;
             /*-----------------------------------------------------------------------*/
 
@@ -121,36 +140,38 @@ public class Monitor {
                 if (pn.isMarked (4)) //Veo si tengo en CPU_ON
                 {
                     if (pn.isPos (shoot)) {
+                        valueToReturn = 1;
+                        printSave (index, valueToReturn);
+                        packetCounter++;
                         try {
+                            notFullBuffer.signal ();
                             if (buffer1.size () == 0)
                                 notEmptyBuffer1.await ();
                         } catch (InterruptedException e1) {
                             e1.printStackTrace ();
-                        } finally {
-                            packetCounter++;
-                            notFullBuffer.signal ();
-                            valueToReturn = 1;
                         }
                     }
-                }
+                } else
+                    printSave (index, valueToReturn);
                 //TODO: BORRAR? System.out.println("Cantidad de paquetes: " + packetCounter);
                 break;
             case 14: // Intenta atender una tarea (T9)
                 if (pn.isMarked (5)) //Veo si tengo en CPU_ON_2
                 {
                     if (pn.isPos (shoot)) {
+                        valueToReturn = 1;
+                        packetCounter++;
+                        printSave (index, valueToReturn);
                         try {
+                            notFullBuffer.signal ();
                             if (buffer2.size () == 0)
                                 notEmptyBuffer2.await ();
                         } catch (InterruptedException e1) {
                             e1.printStackTrace ();
-                        } finally {
-                            packetCounter++;
-                            notFullBuffer.signal ();
-                            valueToReturn = 1;
                         }
                     }
-                }
+                } else
+                    printSave (index, valueToReturn);
                 //TODO: BORRAR? System.out.println("Cantidad de paquetes: " + packetCounter);
                 break;
 
@@ -161,12 +182,14 @@ public class Monitor {
                     powerDownCpu1.signal ();
                     valueToReturn = 1;
                 }
+                printSave (index, valueToReturn);
                 break;
             case 4: // termina atender una tarea (service_rate_2)
                 if (pn.isPos (shoot)) {
                     powerDownCpu2.signal ();
                     valueToReturn = 1;
                 }
+                printSave (index, valueToReturn);
                 break;
 
             /*-----------------------------------------------------------------------*/
@@ -174,26 +197,30 @@ public class Monitor {
             case 10: // Para funar los tokens en P6 cuando el cpu ya esta prendido (T5)
                 if (pn.isMarked (4)) { //Veo si hay tokens en CPU_ON
                     if (pn.isPos (shoot)) {
+                        valueToReturn = 1;
+                        printSave (index, valueToReturn);
                         try {
                             powerDownCpu1.await ();
                         } catch (InterruptedException e1) {
                             e1.printStackTrace ();
                         }
-                        valueToReturn = 1;
                     }
-                }
+                } else
+                    printSave (index, valueToReturn);
                 break;
             case 6: // Para funar los tokens en P13 cuando el cpu ya esta prendido (T5)
                 if (pn.isMarked (5)) { //Veo si hay tokens en CPU_ON_2
                     if (pn.isPos (shoot)) {
+                        valueToReturn = 1;
+                        printSave (index, valueToReturn);
                         try {
                             powerDownCpu2.await ();
                         } catch (InterruptedException e1) {
                             e1.printStackTrace ();
                         }
-                        valueToReturn = 1;
                     }
-                }
+                } else
+                    printSave (index, valueToReturn);
                 break;
 
             /*-----------------------------------------------------------------------*/
@@ -204,6 +231,7 @@ public class Monitor {
                         valueToReturn = 1;
                     }
                 }
+                printSave (index, valueToReturn);
                 break;
             case 7: //arranca el encendido del cpu (T13)
                 if ((pn.isMarked (10))) {         // P13
@@ -211,44 +239,39 @@ public class Monitor {
                         valueToReturn = 1;
                     }
                 }
+                printSave (index, valueToReturn);
                 break;
 
             /*-----------------------------------------------------------------------*/
 
             case 12: //enciende el cpu (T7)
                 if (pn.isPos (shoot)) {
+                    valueToReturn = 1;
+                    printSave (index, valueToReturn);
                     try {
                         powerDownCpu1.await ();
                     } catch (InterruptedException e1) {
                         e1.printStackTrace ();
                     }
-                    valueToReturn = 1;
-                }
+                } else
+                    printSave (index, valueToReturn);
                 break;
             case 8: //enciende el cpu (T14)
                 if (pn.isPos (shoot)) {
+                    valueToReturn = 1;
+                    printSave (index, valueToReturn);
                     try {
                         powerDownCpu2.await ();
                     } catch (InterruptedException e1) {
                         e1.printStackTrace ();
                     }
-                    valueToReturn = 1;
-                }
+                } else
+                    printSave (index, valueToReturn);
                 break;
         }
 
         /*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
 
-
-        if (print) {
-            if (valueToReturn > 0) {
-                System.out.println ("Hice disparo " + numTransitions[index]);
-            } else {
-                System.out.println ("No se puedo realizar el disparo " + numTransitions[index]);
-            }
-        }
-        if (valueToReturn > 0)
-            transitions += numTransitions[index];
 
         if (valueToReturn == 0 && packetCounter == dataNumber) {
             //TODO: BORRAR? notify();

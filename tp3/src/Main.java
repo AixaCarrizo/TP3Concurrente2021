@@ -15,7 +15,7 @@ public class Main {
     private final static Condition powerDownCpu2 = lock.newCondition ();
     public static CPU_buffer buffer1 = new CPU_buffer ();
     public static CPU_buffer buffer2 = new CPU_buffer ();
-    private final static int dataNumber = 3;
+    private final static int dataNumber = 2;
 
     private final static Monitor monitor = new Monitor (buffer1, buffer2, lock, notEmptyBuffer1, notEmptyBuffer2, notFullBuffer, powerDownCpu1, powerDownCpu2, dataNumber);
 

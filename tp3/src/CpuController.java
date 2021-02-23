@@ -25,6 +25,7 @@ public class CpuController extends Thread {
                     // apagar (power_down_threshold Y power_down_2) (Index: 1 y 2)
                 }
             } else {
+                monitor.shoot (1 + cpunumber);
                 break;
             }
         }

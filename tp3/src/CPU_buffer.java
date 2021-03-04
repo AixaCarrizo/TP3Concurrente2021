@@ -6,10 +6,16 @@ public class CPU_buffer {
 
 
     private Queue<String> cola;
+    private int maxSize;
 
-    public CPU_buffer() {
+    public CPU_buffer(int maxSize) {
 
         cola = new ConcurrentLinkedQueue<>();
+        this.maxSize = maxSize;
+    }
+
+    public int getMaxSize(){
+        return this.maxSize;
     }
 
     public void add(String dato) {

@@ -9,7 +9,7 @@ public class Politica {
     }
 
     int bufferPolitic () {
-        if (buffer1.size () > buffer2.size ()) {
+        if ( (buffer1.size () > buffer2.size () ) && ( buffer2.size() < buffer2.getMaxSize() ) ) {
             return 12;
         } else
             return 11;

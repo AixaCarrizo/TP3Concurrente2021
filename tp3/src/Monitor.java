@@ -6,7 +6,6 @@ import java.util.concurrent.locks.Lock;
 
 public class Monitor {
     private final Lock lock; //esto es para que no intenten disparar cosas al mismo tiempo)?
-    int maxBufferSize = 10;
     private final Condition notEmptyBuffer1; //si esta vacio el buffer
     private final Condition notEmptyBuffer2; //si esta vacio el buffer
     private final Condition notFullBuffer;//si esta lleno el buffer
@@ -78,7 +77,7 @@ public class Monitor {
             case 0:
                 if (pn.isPos (shoot)) {
                     try {
-                        if (buffer1.size () == maxBufferSize && buffer2.size () == maxBufferSize) {
+                        if ( ( buffer1.size () == buffer1.getMaxSize() ) && ( buffer2.size () == buffer2.getMaxSize() ) ) {
                             printSave (index, valueToReturn);
                             notFullBuffer.await ();
                         }

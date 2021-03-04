@@ -11,18 +11,18 @@ public class Log implements Runnable {
     private final CPU_buffer buff2;
     private final CpuController controller1;
     private final CpuController controller2;
-    private final GenData gd;
+    //private final GenData gd;
     private final CPU cpu1;
     private final CPU cpu2;
     private final static boolean print = false;
 
 
-    Log (CPU_buffer buffer1, CPU_buffer buffer2, CpuController controller1, CpuController controller2, GenData gd, CPU cpu1, CPU cpu2) {
+    Log (CPU_buffer buffer1, CPU_buffer buffer2, CpuController controller1, CpuController controller2, CPU cpu1, CPU cpu2) {
         this.buff1 = buffer1;
         this.buff2 = buffer2;
         this.controller1 = controller1;
         this.controller2 = controller2;
-        this.gd = gd;
+        //this.gd = gd;
         this.cpu1 = cpu1;
         this.cpu2 = cpu2;
     }

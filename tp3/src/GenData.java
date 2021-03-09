@@ -22,8 +22,8 @@ public class GenData extends Thread {
             int nroData = 1;
             while (dataNumber >= nroData) {
                 int cpuId;
-                cpuId = monitor.shoot (0); //Disparo Arrival_rate
                 Thread.sleep (arrivalRate);
+                cpuId = monitor.shoot (0); //Disparo Arrival_rate
 
                 if (cpuId == 11) {
                     monitor.shoot (5); //Disparo T1

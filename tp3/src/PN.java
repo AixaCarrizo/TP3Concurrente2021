@@ -3,7 +3,6 @@ public class PN {
     int[] B;
     int[][] I;
     int[][] H;
-    //int[] Q;
     int[] E;
     int estados; //N
     int transiciones; //M
@@ -15,7 +14,6 @@ public class PN {
     public PN(int[] m, int[] b, int[] q, int[][] i, int[][] h, int[] E) {
         this.M = m; // Vector de marcado inicial // (N x 1)
         this.B = b; // Si B[i] = 1, la transicion esta desensibilizada (M x 1)
-        this.Q = q; // Si M[i] = 0 -> Q[i] = 1 ; Caso contrario Q[i] = 0 (N x 1)
         this.I = i; // Matriz de incidencia (N x M)
         this.H = h; // Matriz de inhibicion (M x N)
     }
@@ -80,13 +78,7 @@ public class PN {
         // printArray(M);
 
 
-        //this.Q  = new int[9];
-        /*for (int i = 0; i < 9; i++) { //M(pi) = 0 -> Q[i] = 1, M(pi) != 0 -> Q[i] = 0
-            if (m[i] != 0) Q[i] = 0;
-            else Q[i] = 1;
-        }
-        System.out.println("Q:\n");
-        printArray(Q);*/
+
 
         //calculo E
         for (int m = 0; m < transiciones; m++) {
@@ -152,13 +144,6 @@ public class PN {
 
         int[] mPrima = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-        /* TODO: Borrar despues
-        if (print)
-            System.out.println ("INDEX:");
-        for (int m = 0; m < transiciones; m++) {
-            System.out.println (m + " - " + index[m]);
-        }
-        */
 
         if (print)
             System.out.println ("Nuevo marcado: \n");

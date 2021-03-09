@@ -6,11 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="0a46128e-2206-4425-97ff-bc55e3a35686" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tp3/src/CPU_buffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/tp3/src/CPU_buffer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tp3/src/Log.java" beforeDir="false" afterPath="$PROJECT_DIR$/tp3/src/Log.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tp3/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/tp3/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tp3/src/Monitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/tp3/src/Monitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tp3/src/Politica.java" beforeDir="false" afterPath="$PROJECT_DIR$/tp3/src/Politica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tp3/src/PN.java" beforeDir="false" afterPath="$PROJECT_DIR$/tp3/src/PN.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,27 +22,24 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tp3/src/Monitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="725">
-              <caret line="284" column="42" lean-forward="true" selection-start-line="284" selection-start-column="42" selection-end-line="284" selection-end-column="42" />
+            <state relative-caret-position="136">
+              <caret line="98" column="19" lean-forward="true" selection-start-line="98" selection-start-column="19" selection-end-line="98" selection-end-column="19" />
               <folding>
-                <element signature="e#0#11677#0" expanded="true" />
                 <element signature="imports" expanded="true" />
-                <element signature="e#2123#2124#0" expanded="true" />
-                <element signature="e#2157#2158#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tp3/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="24" column="37" selection-start-line="24" selection-start-column="37" selection-end-line="24" selection-end-column="37" />
+            <state relative-caret-position="323">
+              <caret line="31" column="20" lean-forward="true" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -54,17 +50,21 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tp3/src/PN.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="161">
+              <caret line="34" column="71" selection-start-line="34" selection-start-column="71" selection-end-line="34" selection-end-column="76" />
+              <folding>
+                <element signature="e#7761#7762#0" expanded="true" />
+                <element signature="e#7789#7790#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tp3/src/Politica.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="30" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
+            <state relative-caret-position="272">
+              <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -72,8 +72,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tp3/src/Log.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-719">
-              <caret line="12" column="44" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="44" />
+            <state relative-caret-position="255">
+              <caret line="70" column="47" selection-start-line="70" selection-start-column="47" selection-end-line="70" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -84,7 +84,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tp3/src/GenData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
+            <state relative-caret-position="39">
               <caret line="28" column="36" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="36" />
             </state>
           </provider>
@@ -94,13 +94,7 @@
         <entry file="file://$PROJECT_DIR$/tp3/src/CPU_buffer.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
-              <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
-              <folding>
-                <element signature="e#317#318#0" expanded="true" />
-                <element signature="e#339#340#0" expanded="true" />
-                <element signature="e#373#374#0" expanded="true" />
-                <element signature="e#407#408#0" expanded="true" />
-              </folding>
+              <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -138,15 +132,15 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/tp3/src/PN.java" />
         <option value="$PROJECT_DIR$/tp3/src/CPU1.java" />
         <option value="$PROJECT_DIR$/tp3/src/CpuController.java" />
-        <option value="$PROJECT_DIR$/tp3/src/Log.java" />
         <option value="$PROJECT_DIR$/tp3/src/GenData.java" />
         <option value="$PROJECT_DIR$/tp3/src/CPU_buffer.java" />
-        <option value="$PROJECT_DIR$/tp3/src/Monitor.java" />
-        <option value="$PROJECT_DIR$/tp3/src/Main.java" />
         <option value="$PROJECT_DIR$/tp3/src/Politica.java" />
+        <option value="$PROJECT_DIR$/tp3/src/PN.java" />
+        <option value="$PROJECT_DIR$/tp3/src/Monitor.java" />
+        <option value="$PROJECT_DIR$/tp3/src/Log.java" />
+        <option value="$PROJECT_DIR$/tp3/src/Main.java" />
       </list>
     </option>
   </component>
@@ -162,8 +156,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -186,6 +178,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="ProjectViewState">
@@ -267,12 +261,13 @@
       <workItem from="1614011491402" duration="4035000" />
       <workItem from="1614018995229" duration="11606000" />
       <workItem from="1614083995538" duration="16111000" />
-      <workItem from="1614808701932" duration="6532000" />
+      <workItem from="1614808701932" duration="6920000" />
+      <workItem from="1615226317479" duration="5559000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24734000" />
+    <option name="totallyTimeSpent" value="30681000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -285,9 +280,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16510066" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1671141" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -296,7 +290,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.30878186" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.52549577" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39943343" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -372,13 +366,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tp3/src/CPU1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="70" lean-forward="true" selection-start-line="7" selection-start-column="70" selection-end-line="7" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/tp3/src/CPU1.java" />
     <entry file="file://$PROJECT_DIR$/tp3/src/CpuController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -423,7 +411,7 @@
           </nodes>
           <notes />
           <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="256.0" y="265.5" />
+          <settings layout="Hierarchic Group" zoom="1.0" x="256.0" y="266.0" />
           <SelectedNodes />
           <Categories />
           <SCOPE>All</SCOPE>
@@ -431,70 +419,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tp3/src/GenData.java">
+    <entry file="file://$USER_HOME$/salida.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="28" column="36" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tp3/src/Log.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-719">
-          <caret line="12" column="44" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="136">
+          <caret line="29" column="17" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tp3/src/PN.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tp3/src/CPU_buffer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+        <state relative-caret-position="161">
+          <caret line="34" column="71" selection-start-line="34" selection-start-column="71" selection-end-line="34" selection-end-column="76" />
           <folding>
-            <element signature="e#317#318#0" expanded="true" />
-            <element signature="e#339#340#0" expanded="true" />
-            <element signature="e#373#374#0" expanded="true" />
-            <element signature="e#407#408#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tp3/src/Monitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="725">
-          <caret line="284" column="42" lean-forward="true" selection-start-line="284" selection-start-column="42" selection-end-line="284" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#11677#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-            <element signature="e#2123#2124#0" expanded="true" />
-            <element signature="e#2157#2158#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tp3/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="24" column="37" selection-start-line="24" selection-start-column="37" selection-end-line="24" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#7761#7762#0" expanded="true" />
+            <element signature="e#7789#7790#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tp3/src/Politica.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="30" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
+        <state relative-caret-position="272">
+          <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tp3/src/CPU_buffer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tp3/src/GenData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="39">
+          <caret line="28" column="36" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tp3/src/Log.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="70" column="47" selection-start-line="70" selection-start-column="47" selection-end-line="70" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tp3/src/Monitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="98" column="19" lean-forward="true" selection-start-line="98" selection-start-column="19" selection-end-line="98" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tp3/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="31" column="20" lean-forward="true" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

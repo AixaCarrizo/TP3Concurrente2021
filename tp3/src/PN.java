@@ -193,5 +193,9 @@ public class PN {
         return ((this.M[index] != 0)); //devuelve false si no hay nada en esa plaza y viceversa
     }
 
+    public int [] getMarkVector(){
+        return this.M;
+    }
+
 }
 

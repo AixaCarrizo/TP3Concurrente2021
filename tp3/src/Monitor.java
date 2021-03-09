@@ -53,6 +53,28 @@ public class Monitor {
         return transitions;
     }
 
+
+    /*
+    INVARIANTES DE PLAZA
+    m1 + m7 = 1
+    m4 + m12 + m14 = 1
+    m5 + m13 + m15 = 1
+    m0 + m6 = 1
+    m8 + m9 = 1
+    */
+
+    private boolean verifyMInvariants(){
+        int mark [] = pn.getMarkVector();
+
+        if( ( ( mark[1] + mark[7] ) == 1) &&  ( ( mark[4] + mark[12] + mark[14] ) == 1) &&
+                ( ( mark[5] + mark[13] + mark[15] ) == 1) && ( ( mark[0] + mark[6] ) == 1) &&( ( mark[8] + mark[9] ) == 1) )
+            return true;
+        else{
+            System.out.println ("Fallo en invariantes de plaza. El vector de marcado es: " + mark);
+            return false;
+        }
+    }
+
     private void printSave (int index, int valueToReturn) {
         if (print) {
             if (valueToReturn > 0) {
@@ -77,7 +99,7 @@ public class Monitor {
             case 0:
                 if (pn.isPos (shoot)) {
                     try {
-                        if ( ( buffer1.size () == buffer1.getMaxSize() ) && ( buffer2.size () == buffer2.getMaxSize() ) ) {
+                        if ( ( buffer1.size () >= buffer1.getMaxSize() ) && ( buffer2.size () >= buffer2.getMaxSize() ) ) {
                             printSave (index, valueToReturn);
                             notFullBuffer.await ();
                         }
@@ -291,9 +313,13 @@ public class Monitor {
             notFullBuffer.signal ();
             lock.unlock ();
             return -1;
-        } else {
+        } else if (verifyMInvariants()){
             lock.unlock ();
             return valueToReturn;
+        }
+        else{
+            lock.unlock();
+            return -1;
         }
         //TODO: BORRAR? return 0;
     }

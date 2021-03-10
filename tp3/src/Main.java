@@ -21,9 +21,9 @@ public class Main {
 
 
     public static void main (String[] args) {
-        GenData gd = new GenData (monitor, buffer1, buffer2, 25, dataNumber);
-        CPU cpu1 = new CPU (monitor, buffer1, buffer2, 50, 1);
-        CPU cpu2 = new CPU (monitor, buffer1, buffer2, 50, 2);
+        GenData gd = new GenData (monitor, buffer1, buffer2, 50, dataNumber);
+        CPU cpu1 = new CPU (monitor, buffer1, buffer2, 100, 1);
+        CPU cpu2 = new CPU (monitor, buffer1, buffer2, 200, 2);
         CpuController cpu1_poweronoff = new CpuController (monitor, 1);
         CpuController cpu2_poweronoff = new CpuController (monitor, 2);
         Thread log = new Thread (new Log (buffer1, buffer2, cpu1_poweronoff, cpu2_poweronoff, cpu1, cpu2));

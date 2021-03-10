@@ -105,11 +105,15 @@ public class Monitor {
                         }
                     } catch (InterruptedException e1) {
                         e1.printStackTrace ();
-                    } finally {
+                    } /*finally {
                         valueToReturn = politic.bufferPolitic ();
                         printSave (index, valueToReturn);
-                    }
+                    }*/
+
+                    valueToReturn = politic.bufferPolitic ();
+                    printSave (index, valueToReturn);
                 }
+
                 break;
 
             /*-----------------------------------------------------------------------*/

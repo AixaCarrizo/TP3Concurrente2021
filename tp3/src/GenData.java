@@ -24,17 +24,18 @@ public class GenData extends Thread {
                 int cpuId;
                 Thread.sleep (arrivalRate);
                 cpuId = monitor.shoot (0); //Disparo Arrival_rate
+                if (cpuId > 0){
+                    if (cpuId == 11) {
+                        if ( monitor.shoot (5) > 0 ) //Disparo T1
+                             buffer1.add ("Dato numero: " + nroData); //Agrego un elemento al buffer
 
-                if (cpuId == 11) {
-                    monitor.shoot (5); //Disparo T1
-                    buffer1.add ("Dato numero: " + nroData); //Agrego un elemento al buffer
-
-                } else if (cpuId == 12) {
-                    monitor.shoot (13); // CAMBIE INDICE POR TRANSICION T8
-                    buffer2.add ("Dato numero: " + nroData); //Agrego un elemento al buffer (Cambiar por buffer2)
+                    } else if (cpuId == 12) {
+                        if ( monitor.shoot (13) > 0) // CAMBIE INDICE POR TRANSICION T8
+                            buffer2.add ("Dato numero: " + nroData); //Agrego un elemento al buffer (Cambiar por buffer2)
+                    }
+                    System.out.println ("GenData       : Genero dato numero " + nroData);
+                    nroData++;
                 }
-                System.out.println ("GenData       : Genero dato numero " + nroData);
-                nroData++;
             }
         } catch (InterruptedException e) {
             e.printStackTrace ();

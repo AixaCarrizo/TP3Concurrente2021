@@ -6,10 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0a46128e-2206-4425-97ff-bc55e3a35686" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diagramaDeClases.mdj" beforeDir="false" afterPath="$PROJECT_DIR$/diagramaDeClases.mdj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tp3/src/GenData.java" beforeDir="false" afterPath="$PROJECT_DIR$/tp3/src/GenData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tp3/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/tp3/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tp3/src/PN.java" beforeDir="false" afterPath="$PROJECT_DIR$/tp3/src/PN.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,8 +23,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tp3/src/Monitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="481">
-              <caret line="318" column="9" lean-forward="true" selection-start-line="318" selection-start-column="9" selection-end-line="318" selection-end-column="9" />
+            <state relative-caret-position="342">
+              <caret line="317" column="30" lean-forward="true" selection-start-line="317" selection-start-column="30" selection-end-line="317" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -35,11 +32,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tp3/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="25" column="57" selection-start-line="25" selection-start-column="57" selection-end-line="25" selection-end-column="57" />
+            <state relative-caret-position="159">
+              <caret line="30" column="17" lean-forward="true" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -56,11 +53,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tp3/src/GenData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="27" column="34" lean-forward="true" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
+            <state relative-caret-position="189">
+              <caret line="27" column="38" lean-forward="true" selection-start-line="27" selection-start-column="38" selection-end-line="27" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -103,18 +100,17 @@
         <option value="$PROJECT_DIR$/tp3/src/CPU_buffer.java" />
         <option value="$PROJECT_DIR$/tp3/src/Politica.java" />
         <option value="$PROJECT_DIR$/tp3/src/Log.java" />
-        <option value="$PROJECT_DIR$/tp3/src/Monitor.java" />
         <option value="$PROJECT_DIR$/tp3/src/PN.java" />
-        <option value="$PROJECT_DIR$/tp3/src/GenData.java" />
         <option value="$PROJECT_DIR$/tp3/src/Main.java" />
+        <option value="$PROJECT_DIR$/tp3/src/Monitor.java" />
+        <option value="$PROJECT_DIR$/tp3/src/GenData.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="951" />
-    <option name="y" value="-9" />
-    <option name="width" value="978" />
-    <option name="height" value="1048" />
+    <option name="x" value="952" />
+    <option name="width" value="977" />
+    <option name="height" value="1038" />
   </component>
   <component name="ProjectId" id="1n49pMrKB47jevDxU6nUQ5s2kFJ" />
   <component name="ProjectView">
@@ -229,12 +225,12 @@
       <workItem from="1614083995538" duration="16111000" />
       <workItem from="1614808701932" duration="6920000" />
       <workItem from="1615226317479" duration="5875000" />
-      <workItem from="1615330699810" duration="2073000" />
+      <workItem from="1615330699810" duration="3908000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33070000" />
+    <option name="totallyTimeSpent" value="34905000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -258,7 +254,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.52549577" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.31303117" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39943343" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -422,10 +418,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/tp3/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="30" column="17" lean-forward="true" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tp3/src/Monitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
-          <caret line="318" column="9" lean-forward="true" selection-start-line="318" selection-start-column="9" selection-end-line="318" selection-end-column="9" />
+        <state relative-caret-position="342">
+          <caret line="317" column="30" lean-forward="true" selection-start-line="317" selection-start-column="30" selection-end-line="317" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -434,18 +440,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tp3/src/GenData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="27" column="34" lean-forward="true" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tp3/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="25" column="57" selection-start-line="25" selection-start-column="57" selection-end-line="25" selection-end-column="57" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="189">
+          <caret line="27" column="38" lean-forward="true" selection-start-line="27" selection-start-column="38" selection-end-line="27" selection-end-column="38" />
         </state>
       </provider>
     </entry>

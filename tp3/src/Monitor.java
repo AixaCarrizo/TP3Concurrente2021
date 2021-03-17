@@ -1,6 +1,7 @@
 //import java.util.concurrent.TimeUnit;
 //import java.util.concurrent.locks.Condition;
 
+
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 
@@ -8,8 +9,6 @@ public class Monitor {
     private final Lock lock; //esto es para que no intenten disparar cosas al mismo tiempo)?
     private final Condition notEmptyBuffer1; //si esta vacio el buffer
     private final Condition notEmptyBuffer2; //si esta vacio el buffer
-    private final Condition notFullBuffer;//si esta lleno el buffer
-    //private final static Condition busyCpu1 = lock.newCondition(); //si el cpu esta ocupado, esta mepa que esta al pedo
     private final Condition powerDownCpu1; //si el cpu esta ocupado
     private final Condition powerDownCpu2; //si el cpu esta ocupado
     private int packetCounter;
@@ -23,7 +22,7 @@ public class Monitor {
     private static final boolean print = false;
 
     public Monitor (CPU_buffer buffer1, CPU_buffer buffer2, Lock lock, Condition notEmptyBuffer1, Condition notEmptyBuffer2
-            , Condition notFullBuffer, Condition powerDownCpu1, Condition powerDownCpu2, int dataNumber) {
+            , Condition powerDownCpu1, Condition powerDownCpu2, int dataNumber) {
         this.buffer1 = buffer1;
         this.buffer2 = buffer2;
         this.lock = lock;
@@ -31,7 +30,6 @@ public class Monitor {
         this.powerDownCpu2 = powerDownCpu2;
         this.notEmptyBuffer1 = notEmptyBuffer1;
         this.notEmptyBuffer2 = notEmptyBuffer2;
-        this.notFullBuffer = notFullBuffer;
         this.packetCounter = 0;
         this.politic = new Politica (buffer1, buffer2);
         this.dataNumber = dataNumber;
@@ -63,15 +61,14 @@ public class Monitor {
     m8 + m9 = 1
     */
 
-    private boolean verifyMInvariants(){
+    private boolean verifyMInvariants()throws Exception{
         int mark [] = pn.getMarkVector();
 
         if( ( ( mark[1] + mark[7] ) == 1) &&  ( ( mark[4] + mark[12] + mark[14] ) == 1) &&
                 ( ( mark[5] + mark[13] + mark[15] ) == 1) && ( ( mark[0] + mark[6] ) == 1) &&( ( mark[8] + mark[9] ) == 1) )
             return true;
         else{
-            System.out.println ("Fallo en invariantes de plaza. El vector de marcado es: " + mark);
-            return false;
+            throw new Exception ("Fallo en invariantes de plaza");
         }
     }
 
@@ -98,18 +95,6 @@ public class Monitor {
             //PRODUCTOR
             case 0:
                 if (pn.isPos (shoot)) {
-                    try {
-                        if ( ( buffer1.size () >= buffer1.getMaxSize() ) && ( buffer2.size () >= buffer2.getMaxSize() ) ) {
-                            printSave (index, valueToReturn);
-                            notFullBuffer.await ();
-                        }
-                    } catch (InterruptedException e1) {
-                        e1.printStackTrace ();
-                    } /*finally {
-                        valueToReturn = politic.bufferPolitic ();
-                        printSave (index, valueToReturn);
-                    }*/
-
                     valueToReturn = politic.bufferPolitic ();
                     printSave (index, valueToReturn);
                 }
@@ -179,7 +164,7 @@ public class Monitor {
                         printSave (index, valueToReturn);
                         packetCounter++;
                         try {
-                            notFullBuffer.signal ();
+                            //notFullBuffer.signal ();
                             if (buffer1.size () == 0)
                                 notEmptyBuffer1.await ();
                         } catch (InterruptedException e1) {
@@ -198,7 +183,7 @@ public class Monitor {
                         packetCounter++;
                         printSave (index, valueToReturn);
                         try {
-                            notFullBuffer.signal ();
+                            //notFullBuffer.signal ();
                             if (buffer2.size () == 0)
                                 notEmptyBuffer2.await ();
                         } catch (InterruptedException e1) {
@@ -307,24 +292,28 @@ public class Monitor {
 
         /*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
 
+        try{
+            if (valueToReturn == 0 && packetCounter == dataNumber) {
+                //TODO: BORRAR? notify();
+                powerDownCpu1.signal ();
+                powerDownCpu2.signal ();
+                notEmptyBuffer1.signal ();
+                notEmptyBuffer2.signal ();
+                lock.unlock ();
+                return -1;
+            } else if (verifyMInvariants()){
+                lock.unlock ();
+                return valueToReturn;
+            }
+            else{
+                lock.unlock();
+                return -1;
+            }
+        }catch (Exception e1 ){
+            e1.printStackTrace ();
+            System.exit(1);
 
-        if (valueToReturn == 0 && packetCounter == dataNumber) {
-            //TODO: BORRAR? notify();
-            powerDownCpu1.signal ();
-            powerDownCpu2.signal ();
-            notEmptyBuffer1.signal ();
-            notEmptyBuffer2.signal ();
-            notFullBuffer.signal ();
-            lock.unlock ();
-            return -1;
-        } else if (verifyMInvariants()){
-            lock.unlock ();
-            return valueToReturn;
         }
-        else{
-            lock.unlock();
-            return -1;
-        }
-        //TODO: BORRAR? return 0;
+        return 0;
     }
 }

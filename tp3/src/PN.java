@@ -161,18 +161,7 @@ public class PN {
     }
 
 
-    /*
-    TODO: BORRAR?
-    public void printArray(int [] array){
-        for(int i = 0; i < array.length; i++)
-            System.out.println(array[i] + " ");
-    }
 
-    public void setPrint(boolean val){
-        print = val;
-        return;
-    }
-    */
 
     public boolean isMarked (int index) {
         return ((this.M[index] != 0)); //devuelve false si no hay nada en esa plaza y viceversa

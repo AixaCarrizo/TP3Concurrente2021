@@ -5,22 +5,21 @@ import java.lang.String;
 import java.time.LocalDateTime;
 import java.util.concurrent.TimeUnit;
 
-public class Log implements Runnable {
-    private String contenido;
-    private final CPU_buffer buff1;
-    private final CPU_buffer buff2;
-    private final CpuController controller1;
-    private final CpuController controller2;
-    //private final GenData gd;
-    private final CPU cpu1;
-    private final CPU cpu2;
-    private final static boolean print = false;
+        public class Log implements Runnable {
+            private String contenido;
+            private final CPU_buffer buff1;
+            private final CPU_buffer buff2;
+            private final CpuController controller1;
+            private final CpuController controller2;
+            private final CPU cpu1;
+            private final CPU cpu2;
+            private final static boolean print = false;
 
 
-    Log (CPU_buffer buffer1, CPU_buffer buffer2, CpuController controller1, CpuController controller2, CPU cpu1, CPU cpu2) {
-        this.buff1 = buffer1;
-        this.buff2 = buffer2;
-        this.controller1 = controller1;
+            Log (CPU_buffer buffer1, CPU_buffer buffer2, CpuController controller1, CpuController controller2, CPU cpu1, CPU cpu2) {
+                this.buff1 = buffer1;
+                this.buff2 = buffer2;
+                this.controller1 = controller1;
         this.controller2 = controller2;
         //this.gd = gd;
         this.cpu1 = cpu1;
@@ -37,6 +36,8 @@ public class Log implements Runnable {
         contenido = contenido + estadoCpu;
         estadoController = " - El estado del controlador 1" + " es " + controller1.getState () + " y el estado del controlador 2 es " + controller2.getState () + "\r\n";
         contenido = contenido + estadoController;
+
+        //contenido = contenido + buff1.size() + " " + buff2.size() + "\n";
     }
 
     public void GuardarArchivo () {
@@ -65,10 +66,10 @@ public class Log implements Runnable {
 
     @Override
     public void run () {
-        for (int j = 1; j <= 1500; j++) {
+        for (int j = 1; j <= 2000; j++) {
             this.EscribirContenido ();
             try {
-                TimeUnit.MILLISECONDS.sleep (50);
+                TimeUnit.MILLISECONDS.sleep (25);
             } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace ();

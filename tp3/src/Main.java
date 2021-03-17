@@ -10,20 +10,19 @@ public class Main {
     static Lock lock = new ReentrantLock ();
     private final static Condition notEmptyBuffer1 = lock.newCondition ();
     private final static Condition notEmptyBuffer2 = lock.newCondition ();
-    private final static Condition notFullBuffer = lock.newCondition ();
     private final static Condition powerDownCpu1 = lock.newCondition ();
     private final static Condition powerDownCpu2 = lock.newCondition ();
-    public static CPU_buffer buffer1 = new CPU_buffer (10);
-    public static CPU_buffer buffer2 = new CPU_buffer (10);
+    public static CPU_buffer buffer1 = new CPU_buffer ();
+    public static CPU_buffer buffer2 = new CPU_buffer ();
     private final static int dataNumber = 1000;
 
-    private final static Monitor monitor = new Monitor (buffer1, buffer2, lock, notEmptyBuffer1, notEmptyBuffer2, notFullBuffer, powerDownCpu1, powerDownCpu2, dataNumber);
+    private final static Monitor monitor = new Monitor (buffer1, buffer2, lock, notEmptyBuffer1, notEmptyBuffer2, powerDownCpu1, powerDownCpu2, dataNumber);
 
 
     public static void main (String[] args) {
-        GenData gd = new GenData (monitor, buffer1, buffer2, 50, dataNumber);
-        CPU cpu1 = new CPU (monitor, buffer1, buffer2, 100, 1);
-        CPU cpu2 = new CPU (monitor, buffer1, buffer2, 200, 2);
+        GenData gd = new GenData (monitor, buffer1, buffer2, 25, dataNumber);
+        CPU cpu1 = new CPU (monitor, buffer1, buffer2, 50, 1);
+        CPU cpu2 = new CPU (monitor, buffer1, buffer2, 150, 2);
         CpuController cpu1_poweronoff = new CpuController (monitor, 1);
         CpuController cpu2_poweronoff = new CpuController (monitor, 2);
         Thread log = new Thread (new Log (buffer1, buffer2, cpu1_poweronoff, cpu2_poweronoff, cpu1, cpu2));
@@ -58,6 +57,5 @@ public class Main {
         } catch (Exception e) {
             e.printStackTrace ();
         }
-        //System.out.println("El string es: " + monitor.getTransitions());
     }
 }

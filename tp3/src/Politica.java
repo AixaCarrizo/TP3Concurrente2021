@@ -10,16 +10,9 @@ public class Politica {
         this.buffer2 = buffer2;
     }
 
-    /*int bufferPolitic () {
-        if ( (buffer1.size () > buffer2.size () ) && ( buffer2.size() < buffer2.getMaxSize() ) ) {
-            return 12;
-        } else
-            return 11;
-    }*/
     int bufferPolitic () {
         if(prevBuff == 11){
-            //if( ( ( buffer1.size() > buffer2.size() ) && ( buffer2.size() < buffer2.getMaxSize() ) ) || (buffer1.size() > buffer1.getMaxSize() ) ){ // si hay más elementos en el buffer 1 que en el 2 y hay espacio en el 2
-            if( ( ( buffer1.size() > buffer2.size() ) && ( buffer2.size() < buffer2.getMaxSize() ) ) ){ // si hay más elementos en el buffer 1 que en el 2 y hay espacio en el 2
+            if( buffer1.size() > buffer2.size() ){
                 prevBuff = 12;
                 return 12;
             }
@@ -28,8 +21,7 @@ public class Politica {
         }
         else if (prevBuff == 12){
 
-            //if( ( ( buffer2.size() > buffer1.size() ) && ( buffer1.size() < buffer1.getMaxSize() ) ) || ( buffer2.size() > buffer2.getMaxSize() ) ){ // si hay más elementos en el buffer 2 que en el 1 y hay espacio en el 1
-            if( ( ( buffer2.size() > buffer1.size() ) && ( buffer1.size() < buffer1.getMaxSize() ) ) ){ // si hay más elementos en el buffer 2 que en el 1 y hay espacio en el 1
+            if ( buffer2.size() > buffer1.size() ){
                 prevBuff = 11;
                 return 11;
             }

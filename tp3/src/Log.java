@@ -5,21 +5,22 @@ import java.lang.String;
 import java.time.LocalDateTime;
 import java.util.concurrent.TimeUnit;
 
-        public class Log implements Runnable {
-            private String contenido;
-            private final CPU_buffer buff1;
-            private final CPU_buffer buff2;
-            private final CpuController controller1;
-            private final CpuController controller2;
-            private final CPU cpu1;
-            private final CPU cpu2;
-            private final static boolean print = false;
+public class Log implements Runnable {
+    private String contenido;
+    private String cantidad;
+    private final CPU_buffer buff1;
+    private final CPU_buffer buff2;
+    private final CpuController controller1;
+    private final CpuController controller2;
+    private final CPU cpu1;
+    private final CPU cpu2;
+    private final static boolean print = false;
 
 
-            Log (CPU_buffer buffer1, CPU_buffer buffer2, CpuController controller1, CpuController controller2, CPU cpu1, CPU cpu2) {
-                this.buff1 = buffer1;
-                this.buff2 = buffer2;
-                this.controller1 = controller1;
+    Log (CPU_buffer buffer1, CPU_buffer buffer2, CpuController controller1, CpuController controller2, CPU cpu1, CPU cpu2) {
+        this.buff1 = buffer1;
+        this.buff2 = buffer2;
+        this.controller1 = controller1;
         this.controller2 = controller2;
         //this.gd = gd;
         this.cpu1 = cpu1;
@@ -36,13 +37,14 @@ import java.util.concurrent.TimeUnit;
         contenido = contenido + estadoCpu;
         estadoController = " - El estado del controlador 1" + " es " + controller1.getState () + " y el estado del controlador 2 es " + controller2.getState () + "\r\n";
         contenido = contenido + estadoController;
+        cantidad = cantidad + buff1.size () + " " + buff2.size () + "\n";
 
         //contenido = contenido + buff1.size() + " " + buff2.size() + "\n";
     }
 
     public void GuardarArchivo () {
         try {
-            String ruta = "D:\\log.txt";
+            String ruta = "./log.txt";
             File file = new File (ruta);
             if (!file.exists ()) {
                 file.createNewFile ();
@@ -52,6 +54,17 @@ import java.util.concurrent.TimeUnit;
 
             bw.write (contenido);
             bw.close ();
+
+            String ruta2 = "./logsimple.txt";
+            File file2 = new File (ruta2);
+            if (!file2.exists ()) {
+                file2.createNewFile ();
+            }
+            FileWriter fw2 = new FileWriter (file2);
+            BufferedWriter bw2 = new BufferedWriter (fw2);
+
+            bw2.write (cantidad);
+            bw2.close ();
 
             if (print) {
                 System.out.println ("Contenido Guardado: ");

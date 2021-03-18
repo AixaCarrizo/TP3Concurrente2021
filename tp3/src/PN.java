@@ -78,8 +78,6 @@ public class PN {
         // printArray(M);
 
 
-
-
         //calculo E
         for (int m = 0; m < transiciones; m++) {
             this.E[m] = 1;
@@ -161,13 +159,11 @@ public class PN {
     }
 
 
-
-
     public boolean isMarked (int index) {
         return ((this.M[index] != 0)); //devuelve false si no hay nada en esa plaza y viceversa
     }
 
-    public int [] getMarkVector(){
+    public int[] getMarkVector () {
         return this.M;
     }
 

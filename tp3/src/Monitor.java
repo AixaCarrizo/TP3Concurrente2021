@@ -61,13 +61,13 @@ public class Monitor {
     m8 + m9 = 1
     */
 
-    private boolean verifyMInvariants()throws Exception{
-        int mark [] = pn.getMarkVector();
+    private boolean verifyMInvariants () throws Exception {
+        int mark[] = pn.getMarkVector ();
 
-        if( ( ( mark[1] + mark[7] ) == 1) &&  ( ( mark[4] + mark[12] + mark[14] ) == 1) &&
-                ( ( mark[5] + mark[13] + mark[15] ) == 1) && ( ( mark[0] + mark[6] ) == 1) &&( ( mark[8] + mark[9] ) == 1) )
+        if (((mark[1] + mark[7]) == 1) && ((mark[4] + mark[12] + mark[14]) == 1) &&
+                ((mark[5] + mark[13] + mark[15]) == 1) && ((mark[0] + mark[6]) == 1) && ((mark[8] + mark[9]) == 1))
             return true;
-        else{
+        else {
             throw new Exception ("Fallo en invariantes de plaza");
         }
     }
@@ -292,7 +292,7 @@ public class Monitor {
 
         /*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
 
-        try{
+        try {
             if (valueToReturn == 0 && packetCounter == dataNumber) {
                 //TODO: BORRAR? notify();
                 powerDownCpu1.signal ();
@@ -301,17 +301,16 @@ public class Monitor {
                 notEmptyBuffer2.signal ();
                 lock.unlock ();
                 return -1;
-            } else if (verifyMInvariants()){
+            } else if (verifyMInvariants ()) {
                 lock.unlock ();
                 return valueToReturn;
-            }
-            else{
-                lock.unlock();
+            } else {
+                lock.unlock ();
                 return -1;
             }
-        }catch (Exception e1 ){
+        } catch (Exception e1) {
             e1.printStackTrace ();
-            System.exit(1);
+            System.exit (1);
 
         }
         return 0;

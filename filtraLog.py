@@ -19,7 +19,7 @@ plt.xlabel('Numero de muestra')
 plt.yscale('linear')
 plt.show()
 
-archivo = open("log2","w")
+archivo = open("log2.txt","w")
 archivo.write(" ".join(buffer1))
 archivo.write("\n\n")
 archivo.write(" ".join(buffer2))

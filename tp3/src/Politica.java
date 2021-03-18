@@ -11,21 +11,18 @@ public class Politica {
     }
 
     int bufferPolitic () {
-        if(prevBuff == 11){
-            if( buffer1.size() > buffer2.size() ){
+        if (prevBuff == 11) {
+            if (buffer1.size () > buffer2.size ()) {
                 prevBuff = 12;
                 return 12;
-            }
-            else
+            } else
                 return 11;
-        }
-        else if (prevBuff == 12){
+        } else if (prevBuff == 12) {
 
-            if ( buffer2.size() > buffer1.size() ){
+            if (buffer2.size () > buffer1.size ()) {
                 prevBuff = 11;
                 return 11;
-            }
-            else
+            } else
                 return 12;
 
         }

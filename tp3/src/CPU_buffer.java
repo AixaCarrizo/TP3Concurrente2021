@@ -9,10 +9,9 @@ public class CPU_buffer {
     //private int maxSize;
 
 
+    public CPU_buffer () {
 
-    public CPU_buffer() {
-
-        cola = new ConcurrentLinkedQueue<>();
+        cola = new ConcurrentLinkedQueue<> ();
     }
 
     /*
@@ -27,15 +26,15 @@ public class CPU_buffer {
         return this.maxSize;
     }*/
 
-    public void add(String dato) {
-        cola.add(dato);
+    public void add (String dato) {
+        cola.add (dato);
     }
 
-    public String remove() {
-        return cola.remove();
+    public String remove () {
+        return cola.remove ();
     }
 
-    public  int size() {
-        return cola.size();
+    public int size () {
+        return cola.size ();
     }
 }

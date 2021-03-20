@@ -74,8 +74,6 @@ public class PN {
     public boolean isPos (int[] index) {
 
         String M_name[] = new String[]{"Active", "Active_2", "CPU_buffer", "CPU_buffer 2", "CPU_ON", "CPU_ON_2", "Idle", "Idle_2", "P0", "P1", "P13", "P6", "Power_up", "Power_up_2", "Stand_by", "Stand_by_2"};
-        //TODO: BORRAR?  System.out.println("Marca: \n");
-        // printArray(M);
 
 
         //calculo E

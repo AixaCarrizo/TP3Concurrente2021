@@ -294,7 +294,6 @@ public class Monitor {
 
         try {
             if (valueToReturn == 0 && packetCounter == dataNumber) {
-                //TODO: BORRAR? notify();
                 powerDownCpu1.signal ();
                 powerDownCpu2.signal ();
                 notEmptyBuffer1.signal ();

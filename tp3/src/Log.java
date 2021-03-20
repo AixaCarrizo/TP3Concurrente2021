@@ -15,7 +15,6 @@ public class Log implements Runnable {
     private final CPU cpu2;
     private final static boolean print = false;
 
-
     Log (CPU_buffer buffer1, CPU_buffer buffer2, CpuController controller1, CpuController controller2, CPU cpu1, CPU cpu2) {
         this.buff1 = buffer1;
         this.buff2 = buffer2;
@@ -60,7 +59,6 @@ public class Log implements Runnable {
             e.printStackTrace ();
         }
     }
-
 
     @Override
     public void run () {

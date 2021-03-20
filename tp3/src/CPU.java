@@ -26,23 +26,19 @@ public class CPU extends Thread {
                 flag = monitor.shoot (9 + cpunumber * 5); // T2 y T9 (Index: 9 y 14)
                 if (flag == -1)
                     break;
-                if (flag == 1) { // Disparo T2/T9
+                if (flag == 1) {            // Disparo T2/T9
                     if (cpunumber == 0)
-                        buffer.remove (); // Saco un elemento del buffer 1
+                        buffer.remove ();   // Saco un elemento del buffer 1
                     else
-                        buffer2.remove (); //Saco un elemento del buffer 2
-
+                        buffer2.remove ();  // Saco un elemento del buffer 2
                     Thread.sleep (serviceRate);
-
                     monitor.shoot (3 + cpunumber); // Disparo service_rate1-2 (Index:  3 y 4);
                     System.out.println ("CPU" + (cpunumber + 1) + "          : Realizo su tarea numero " + tasks);
                     tasks++;
-
                 } else {
                     Thread.sleep (1000);
                 }
             }
-
         } catch (InterruptedException e) {
             e.printStackTrace ();
         }

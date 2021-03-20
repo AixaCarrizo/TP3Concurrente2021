@@ -1,7 +1,3 @@
-//import java.util.concurrent.TimeUnit;
-//import java.util.concurrent.locks.Condition;
-
-
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 
@@ -51,7 +47,6 @@ public class Monitor {
         return transitions;
     }
 
-
     /*
     INVARIANTES DE PLAZA
     m1 + m7 = 1
@@ -98,7 +93,6 @@ public class Monitor {
                     valueToReturn = politic.bufferPolitic ();
                     printSave (index, valueToReturn);
                 }
-
                 break;
 
             /*-----------------------------------------------------------------------*/
@@ -154,6 +148,7 @@ public class Monitor {
                 }
                 printSave (index, valueToReturn);
                 break;
+
             /*-----------------------------------------------------------------------*/
 
             case 9: // Intenta atender una tarea (T2)
@@ -173,7 +168,6 @@ public class Monitor {
                     }
                 } else
                     printSave (index, valueToReturn);
-                //TODO: BORRAR? System.out.println("Cantidad de paquetes: " + packetCounter);
                 break;
             case 14: // Intenta atender una tarea (T9)
                 if (pn.isMarked (5)) //Veo si tengo en CPU_ON_2
@@ -192,7 +186,6 @@ public class Monitor {
                     }
                 } else
                     printSave (index, valueToReturn);
-                //TODO: BORRAR? System.out.println("Cantidad de paquetes: " + packetCounter);
                 break;
 
             /*-----------------------------------------------------------------------*/
@@ -310,7 +303,6 @@ public class Monitor {
         } catch (Exception e1) {
             e1.printStackTrace ();
             System.exit (1);
-
         }
         return 0;
     }

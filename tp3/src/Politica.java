@@ -18,13 +18,11 @@ public class Politica {
             } else
                 return 11;
         } else if (prevBuff == 12) {
-
             if (buffer2.size () > buffer1.size ()) {
                 prevBuff = 11;
                 return 11;
             } else
                 return 12;
-
         }
         return -1;
     }

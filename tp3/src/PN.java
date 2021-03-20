@@ -9,7 +9,6 @@ public class PN {
     static boolean print = false;
 
     /*
-    TODO: BORRAR?
     // N = cant de estados , M = cant de transiciones
     public PN(int[] m, int[] b, int[] q, int[][] i, int[][] h, int[] E) {
         this.M = m; // Vector de marcado inicial // (N x 1)
@@ -28,28 +27,28 @@ public class PN {
 
         //                    / Ar P  P2 S  S2 1  12 13 14 2  5  6  7  8  9
         this.I = new int[][]{{0, 0, 0, -1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0},        // m0=Active
-                {0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},        // m1=Active_2
-                {0, 0, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0, 0, 0},        // m2=CPU_buffer
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, -1},        // m3=CPU_buffer2
-                {0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0},        // m4=CPU_ON
-                {0, 0, -1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0},        // m5=CPU_ON_2
-                {0, 0, 0, 1, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0},        // m6=Idle
-                {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1},        // m7=Idle_2
-                {-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0},        // m8=P0
-                {1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, -1, 0},        //m9=P1
-                {0, 0, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, 1, 0},        //m10=P13
-                {0, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, -1, 0, 0},        //m11=P6
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, -1, 0, 0},        //m12=Power_up
-                {0, 0, 0, 0, 0, 0, 0, 1, -1, 0, 0, 0, 0, 0, 0},        //m13=Power_up_2
-                {0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0},        //m14=Stand_by
-                {0, 0, 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0},        //m15=Stand_by_2
+                {0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},        // M1=Active_2
+                {0, 0, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0, 0, 0},        // M2=CPU_buffer
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, -1},        // M3=CPU_buffer2
+                {0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0},        // M4=CPU_ON
+                {0, 0, -1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0},        // M5=CPU_ON_2
+                {0, 0, 0, 1, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0},        // M6=Idle
+                {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1},        // M7=Idle_2
+                {-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0},        // M8=P0
+                {1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, -1, 0},       // M9=P1
+                {0, 0, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, 1, 0},       // M10=P13
+                {0, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, -1, 0, 0},       // M11=P6
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, -1, 0, 0},        // M12=Power_up
+                {0, 0, 0, 0, 0, 0, 0, 1, -1, 0, 0, 0, 0, 0, 0},        // M13=Power_up_2
+                {0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0},        // M14=Stand_by
+                {0, 0, 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0},        // M15=Stand_by_2
         };
 
         this.H = new int[][]{{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},        // arrival_rate
-                {1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},        // power_down_threshold
-                {0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},        // power_down_2
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},        // service_rate
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},        // service_rate_2
+                {1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},        // Power_down_threshold
+                {0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},        // Power_down_2
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},        // Service_rate
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},        // Service_rate_2
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},        // T1
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},        // T12
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},        // T13
@@ -63,8 +62,8 @@ public class PN {
         };
 
 
-        this.B = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; //vector de transiciones desensibilizadas por arco inhibidor
-        this.E = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; //vector de sensibilizado
+        this.B = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; // Vector de transiciones desensibilizadas por arco inhibidor
+        this.E = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; // Vector de sensibilizado
         this.estados = 16;
         this.transiciones = 15;
 
@@ -75,8 +74,7 @@ public class PN {
 
         String M_name[] = new String[]{"Active", "Active_2", "CPU_buffer", "CPU_buffer 2", "CPU_ON", "CPU_ON_2", "Idle", "Idle_2", "P0", "P1", "P13", "P6", "Power_up", "Power_up_2", "Stand_by", "Stand_by_2"};
 
-
-        //calculo E
+        // Calculo E
         for (int m = 0; m < transiciones; m++) {
             this.E[m] = 1;
 
@@ -87,7 +85,7 @@ public class PN {
                 }
             }
         }
-        //System.out.println("E: \n");
+        // System.out.println("E: \n");
         //printArray(E);
 
         int temp;
@@ -96,8 +94,8 @@ public class PN {
         //Calculo B
         for (int m = 0; m < transiciones; m++) {
             B[m] = 0;
-            for (int n = 0; n < estados; n++) {   //Si algun numero del nuevo vector de marcado es = 1, no puedo dispararla
-                //temp = H[m][i] * Q[i];    //Sumo para obtener el nuevo vector de desensibilizado
+            for (int n = 0; n < estados; n++) {   // Si algun numero del nuevo vector de marcado es = 1, no puedo dispararla
+                //temp = H[m][i] * Q[i];    // Sumo para obtener el nuevo vector de desensibilizado
                 temp = H[m][n] * M[n];
                 B[m] = B[m] + temp; // B = 0 -> no se puede :(
             }
@@ -108,19 +106,19 @@ public class PN {
             }
         }
 
-        //System.out.println("H x m: \n");
-        //printArray(B);
+        // System.out.println("H x m: \n");
+        // printArray(B);
 
         for (int m = 0; m < transiciones; m++) {
             if (B[m] * E[m] > 0) aux[m] = 1; // B and E
             if (aux[m] * index[m] > 0) aux[m] = 1; // sigma and Ex
-            else aux[m] = 0; //si no pongo el else, quedan los unos de la operacion anterior
+            else aux[m] = 0; // Si no pongo el else, quedan los unos de la operacion anterior
         }
 
-        //System.out.println("sigma and Ex: \n");
+        // System.out.println("sigma and Ex: \n");
         //printArray(aux);
 
-        int zeroCounter = 0; //esto es para ver que lo que quiero y puedo disparar sea diferente de 0
+        int zeroCounter = 0; // Esto es para ver que lo que quiero y puedo disparar sea diferente de 0
         for (int m = 0; m < transiciones; m++) {
             if (aux[m] != 0) zeroCounter++;
         }
@@ -140,11 +138,10 @@ public class PN {
 
         int[] mPrima = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-
         if (print)
             System.out.println ("Nuevo marcado: \n");
-        for (int n = 0; n < estados; n++) {   //Si algun numero del nuevo vector de marcado es negativo, no puedo dispararla
-            mPrima[n] = M[n] + aux2[n];    //Sumo para obtener el nuevo vector de marcado
+        for (int n = 0; n < estados; n++) {   // Si algun numero del nuevo vector de marcado es negativo, no puedo dispararla
+            mPrima[n] = M[n] + aux2[n];    // Sumo para obtener el nuevo vector de marcado
             if (print)
                 System.out.println (mPrima[n] + " " + M_name[n] + "\n");
             if (mPrima[n] < 0) {
@@ -156,9 +153,8 @@ public class PN {
         return true;
     }
 
-
     public boolean isMarked (int index) {
-        return ((this.M[index] != 0)); //devuelve false si no hay nada en esa plaza y viceversa
+        return ((this.M[index] != 0)); // Devuelve false si no hay nada en esa plaza y viceversa
     }
 
     public int[] getMarkVector () {
@@ -166,4 +162,3 @@ public class PN {
     }
 
 }
-

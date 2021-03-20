@@ -7,7 +7,6 @@ import java.util.concurrent.TimeUnit;
 
 public class Log implements Runnable {
     private String contenido;
-    private String cantidad;
     private final CPU_buffer buff1;
     private final CPU_buffer buff2;
     private final CpuController controller1;
@@ -37,8 +36,6 @@ public class Log implements Runnable {
         contenido = contenido + estadoCpu;
         estadoController = " - El estado del controlador 1" + " es " + controller1.getState () + " y el estado del controlador 2 es " + controller2.getState () + "\r\n";
         contenido = contenido + estadoController;
-        cantidad = cantidad + buff1.size () + " " + buff2.size () + "\n";
-
         //contenido = contenido + buff1.size() + " " + buff2.size() + "\n";
     }
 
@@ -54,18 +51,6 @@ public class Log implements Runnable {
 
             bw.write (contenido);
             bw.close ();
-
-            String ruta2 = "./logsimple.txt";
-            File file2 = new File (ruta2);
-            if (!file2.exists ()) {
-                file2.createNewFile ();
-            }
-            FileWriter fw2 = new FileWriter (file2);
-            BufferedWriter bw2 = new BufferedWriter (fw2);
-
-            bw2.write (cantidad);
-            bw2.close ();
-
             if (print) {
                 System.out.println ("Contenido Guardado: ");
                 System.out.println (contenido);

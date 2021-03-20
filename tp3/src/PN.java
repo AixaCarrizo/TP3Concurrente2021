@@ -1,12 +1,12 @@
 public class PN {
-    int[] M;
-    int[] B;
-    int[][] I;
-    int[][] H;
-    int[] E;
-    int estados; //N
-    int transiciones; //M
-    static boolean print = false;
+    private int[] M;
+    private int[] B;
+    private int[][] I;
+    private int[][] H;
+    private int[] E;
+    private int estados; //N
+    private int transiciones; //M
+    private static boolean print = false;
 
     /*
     // N = cant de estados , M = cant de transiciones

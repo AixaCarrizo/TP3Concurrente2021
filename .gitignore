@@ -23,6 +23,7 @@
 hs_err_pid*
 
 #personal
+*.txt
 *log.txt
 D:\log.txt
 *ransitions.txt

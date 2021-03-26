@@ -14,13 +14,13 @@ public class Main {
     private final static Condition powerDownCpu2 = lock.newCondition ();
     public static CPU_buffer buffer1 = new CPU_buffer ();
     public static CPU_buffer buffer2 = new CPU_buffer ();
-    private final static int dataNumber = 1000;
+    private final static int dataNumber = 100;
 
     private final static Monitor monitor = new Monitor (buffer1, buffer2, lock, notEmptyBuffer1, notEmptyBuffer2, powerDownCpu1, powerDownCpu2, dataNumber);
 
 
     public static void main (String[] args) {
-        GenData gd = new GenData (monitor, buffer1, buffer2, 25, dataNumber);
+        GenData gd = new GenData (monitor, buffer1, buffer2, 50, dataNumber);
         CPU cpu1 = new CPU (monitor, buffer1, buffer2, 50, 1);
         CPU cpu2 = new CPU (monitor, buffer1, buffer2, 50, 2);
         CpuController cpu1_poweronoff = new CpuController (monitor, 1);

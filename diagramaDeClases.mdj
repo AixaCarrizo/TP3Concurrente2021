@@ -2106,7 +2106,7 @@
 											"top": 830,
 											"width": 170.89794921875,
 											"height": 13,
-											"text": "+M: int[ ]",
+											"text": "-M: int[ ]",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2123,7 +2123,7 @@
 											"top": 845,
 											"width": 170.89794921875,
 											"height": 13,
-											"text": "+B: int[ ]",
+											"text": "-B: int[ ]",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2140,7 +2140,7 @@
 											"top": 860,
 											"width": 170.89794921875,
 											"height": 13,
-											"text": "+I: int[ ] [ ]",
+											"text": "-I: int[ ] [ ]",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2157,7 +2157,7 @@
 											"top": 875,
 											"width": 170.89794921875,
 											"height": 13,
-											"text": "+H: int[ ] [ ]",
+											"text": "-H: int[ ] [ ]",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2174,7 +2174,7 @@
 											"top": 890,
 											"width": 170.89794921875,
 											"height": 13,
-											"text": "+E: int[ ]",
+											"text": "-E: int[ ]",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2191,7 +2191,7 @@
 											"top": 905,
 											"width": 170.89794921875,
 											"height": 13,
-											"text": "+estados: int",
+											"text": "-estados: int",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2208,7 +2208,7 @@
 											"top": 920,
 											"width": 170.89794921875,
 											"height": 13,
-											"text": "+transiciones: int",
+											"text": "-transiciones: int",
 											"horizontalAlignment": 0
 										}
 									],
@@ -8781,6 +8781,7 @@
 								"$ref": "AAAAAAF3+h+GDuQV8Fk="
 							},
 							"name": "M",
+							"visibility": "private",
 							"type": "int[ ]"
 						},
 						{
@@ -8790,6 +8791,7 @@
 								"$ref": "AAAAAAF3+h+GDuQV8Fk="
 							},
 							"name": "B",
+							"visibility": "private",
 							"type": "int[ ]"
 						},
 						{
@@ -8799,6 +8801,7 @@
 								"$ref": "AAAAAAF3+h+GDuQV8Fk="
 							},
 							"name": "I",
+							"visibility": "private",
 							"type": "int[ ] [ ]"
 						},
 						{
@@ -8808,6 +8811,7 @@
 								"$ref": "AAAAAAF3+h+GDuQV8Fk="
 							},
 							"name": "H",
+							"visibility": "private",
 							"type": "int[ ] [ ]"
 						},
 						{
@@ -8817,6 +8821,7 @@
 								"$ref": "AAAAAAF3+h+GDuQV8Fk="
 							},
 							"name": "E",
+							"visibility": "private",
 							"type": "int[ ]"
 						},
 						{
@@ -8826,6 +8831,7 @@
 								"$ref": "AAAAAAF3+h+GDuQV8Fk="
 							},
 							"name": "estados",
+							"visibility": "private",
 							"type": "int"
 						},
 						{
@@ -8835,6 +8841,7 @@
 								"$ref": "AAAAAAF3+h+GDuQV8Fk="
 							},
 							"name": "transiciones",
+							"visibility": "private",
 							"type": "int"
 						}
 					],

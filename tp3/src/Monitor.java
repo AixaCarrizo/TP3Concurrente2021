@@ -158,10 +158,17 @@ public class Monitor {
                         valueToReturn = 1;
                         printSave (index, valueToReturn);
                         packetCounter++;
-                        try {
+                        /*try {
                             //notFullBuffer.signal ();
                             if (buffer1.size () == 0)
                                 notEmptyBuffer1.await ();
+                        } catch (InterruptedException e1) {
+                            e1.printStackTrace ();
+                        }*/
+                    }
+                    else{
+                        try {
+                            notEmptyBuffer1.await ();
                         } catch (InterruptedException e1) {
                             e1.printStackTrace ();
                         }
@@ -182,10 +189,17 @@ public class Monitor {
                         valueToReturn = 1;
                         packetCounter++;
                         printSave (index, valueToReturn);
-                        try {
+                        /*try {
                             //notFullBuffer.signal ();
                             if (buffer2.size () == 0)
                                 notEmptyBuffer2.await ();
+                        } catch (InterruptedException e1) {
+                            e1.printStackTrace ();
+                        }*/
+                    }
+                    else{
+                        try {
+                            notEmptyBuffer2.await ();
                         } catch (InterruptedException e1) {
                             e1.printStackTrace ();
                         }

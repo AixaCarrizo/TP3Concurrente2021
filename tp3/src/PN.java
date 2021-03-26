@@ -125,7 +125,7 @@ public class PN {
             this.E[m] = 1;
 
             for (int n = 0; n < estados; n++) {
-                if (I[n][m] + M[n] < 0) {
+                if (Ineg[n][m] + M[n] < 0) {
                     E[m] = 0;
                     break;
                 }

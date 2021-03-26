@@ -166,8 +166,14 @@ public class Monitor {
                             e1.printStackTrace ();
                         }
                     }
-                } else
+                } else {
                     printSave (index, valueToReturn);
+                    try {
+                        notEmptyBuffer1.await ();
+                    } catch (InterruptedException e1) {
+                        e1.printStackTrace ();
+                    }
+                }
                 break;
             case 14: // Intenta atender una tarea (T9)
                 if (pn.isMarked (5)) //Veo si tengo en CPU_ON_2
@@ -184,8 +190,14 @@ public class Monitor {
                             e1.printStackTrace ();
                         }
                     }
-                } else
+                } else {
                     printSave (index, valueToReturn);
+                    try {
+                        notEmptyBuffer2.await ();
+                    } catch (InterruptedException e1) {
+                        e1.printStackTrace ();
+                    }
+                }
                 break;
 
             /*-----------------------------------------------------------------------*/
